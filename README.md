@@ -1,12 +1,7 @@
-# React + Vite
+# antd-dynamic-theme
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+多版本 antd 项目（antd@5 + antd@4）中，统一动态主题设置，分别需要测试各版本antd下官方组件、自定义组件、样式文件、动态加载组件的主题设置是否正确。
 
-Currently, two official plugins are available:
+## antd@5
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+使用 `css in js` + `theme.useToken()`

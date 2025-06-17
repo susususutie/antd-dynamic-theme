@@ -1,34 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Antd5Demo from './Antd5Demo'
+// import Antd4Demo from './Antd4Demo'
+import { ConfigProvider } from 'antd'
+import zhCN from 'antd/locale/zh_CN'
+import 'dayjs/locale/zh-cn' // for date-picker i18n
+import { useContext } from 'react'
+import { ThemeContext } from './stores/themeContext'
+import { StyleProvider, legacyLogicalPropertiesTransformer } from '@ant-design/cssinjs'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const {
+    prefixCls,
+    iconPrefixCls,
+    antd4prefixCls: _antd4prefixCls,
+    antd4IconPrefixCls: _antd4IconPrefixCls,
+    ...token
+  } = useContext(ThemeContext).value
+
+  console.log(token)
+
+  // TODO 动态加载组件，测试自定义样式是否被覆盖
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <ConfigProvider
+      prefixCls={prefixCls}
+      iconPrefixCls={iconPrefixCls}
+      locale={zhCN}
+      theme={{
+        token: token,
+      }}
+    >
+      <StyleProvider hashPriority='high' transformers={[legacyLogicalPropertiesTransformer]}>
+        <Antd5Demo />
+        {/* <Antd4Demo /> */}
+      </StyleProvider>
+    </ConfigProvider>
   )
 }
 
