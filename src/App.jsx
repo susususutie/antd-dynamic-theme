@@ -4,19 +4,14 @@ import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import 'dayjs/locale/zh-cn' // for date-picker i18n
 import { useContext } from 'react'
-import { ThemeContext } from './stores/themeContext'
+import { PrefixContext } from './stores/prefixContext'
+import { SeedTokenContext } from './stores/seedTokenContext'
 import { StyleProvider, legacyLogicalPropertiesTransformer } from '@ant-design/cssinjs'
+import { ThemeProvider } from 'antd-style'
 
 function App() {
-  const {
-    prefixCls,
-    iconPrefixCls,
-    antd4prefixCls: _antd4prefixCls,
-    antd4IconPrefixCls: _antd4IconPrefixCls,
-    ...token
-  } = useContext(ThemeContext).value
-
-  console.log(token)
+  const { prefixCls, iconPrefixCls } = useContext(PrefixContext).value
+  const seedToken = useContext(SeedTokenContext).value
 
   // TODO 动态加载组件，测试自定义样式是否被覆盖
 
@@ -26,13 +21,15 @@ function App() {
       iconPrefixCls={iconPrefixCls}
       locale={zhCN}
       theme={{
-        token: token,
+        token: seedToken,
       }}
     >
-      <StyleProvider hashPriority='high' transformers={[legacyLogicalPropertiesTransformer]}>
-        <Antd5Demo />
-        {/* <Antd4Demo /> */}
-      </StyleProvider>
+      <ThemeProvider themeMode='auto'>
+        <StyleProvider hashPriority='high' transformers={[legacyLogicalPropertiesTransformer]}>
+          <Antd5Demo />
+          {/* <Antd4Demo /> */}
+        </StyleProvider>
+      </ThemeProvider>
     </ConfigProvider>
   )
 }

@@ -13,6 +13,7 @@
     "@ant-design/cssinjs": "1.23.0",
     "@ant-design/icons": "^6.0.0",
     "antd": "^5.26.0",
+    "antd-style": "^3.7.1",
     "antd4": "npm:antd@^4.24.16",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
