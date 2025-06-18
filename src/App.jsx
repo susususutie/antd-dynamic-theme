@@ -6,12 +6,14 @@ import 'dayjs/locale/zh-cn' // for date-picker i18n
 import { useContext } from 'react'
 import { PrefixContext } from './stores/prefixContext'
 import { SeedTokenContext } from './stores/seedTokenContext'
+import { ThemeModeContext } from './stores/themeModeContext'
 import { StyleProvider, legacyLogicalPropertiesTransformer } from '@ant-design/cssinjs'
 import { ThemeProvider } from 'antd-style'
 
 function App() {
   const { prefixCls, iconPrefixCls } = useContext(PrefixContext).value
   const seedToken = useContext(SeedTokenContext).value
+  const themeMode = useContext(ThemeModeContext).value
 
   // TODO 动态加载组件，测试自定义样式是否被覆盖
 
@@ -24,7 +26,7 @@ function App() {
         token: seedToken,
       }}
     >
-      <ThemeProvider themeMode='auto'>
+      <ThemeProvider themeMode={themeMode}>
         <StyleProvider hashPriority='high' transformers={[legacyLogicalPropertiesTransformer]}>
           <Antd5Demo />
           {/* <Antd4Demo /> */}
