@@ -6,7 +6,9 @@ import { theme } from 'antd'
 const dynamicStyleMark = `-ant-${Date.now()}-${Math.random()}`
 
 function getStyle(prefixCls, seedToken) {
-  const token = theme.getDesignToken({token:seedToken})
+  // 暗色模式
+  // const token = theme.getDesignToken({ algorithm: theme.darkAlgorithm, token: seedToken })
+  const token = theme.getDesignToken({ algorithm: theme.darkAlgorithm, token: seedToken })
   console.log('token', token)
   const variables = {}
 
@@ -16,10 +18,10 @@ function getStyle(prefixCls, seedToken) {
     return clone.toRgbString()
   }
 
-  const fillColor = (type) => {
+  const fillColor = type => {
     const upperType = type.charAt(0).toUpperCase() + type.slice(1)
     const baseColor = new TinyColor(token[`color${upperType}`])
-    
+
     variables[`${type}-color`] = token[`color${upperType}`]
     variables[`${type}-color-disabled`] = token[`color${upperType}BgHover`]
     variables[`${type}-color-hover`] = token[`color${upperType}TextHover`]

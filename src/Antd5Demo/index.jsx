@@ -51,7 +51,6 @@ export default function Antd5Demo() {
         <Button type='primary' onClick={() => setCount(c => c + 1)}>
           官方组件
         </Button>
-        <Button type>自定义组件</Button>
         <button style={inlineStyle}>
           <span>自定义组件</span>
         </button>
