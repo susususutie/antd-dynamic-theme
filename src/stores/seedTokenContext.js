@@ -1,11 +1,11 @@
 import { createContext } from 'react'
 
 export const initialSeedTokenValue = {
-  colorPrimary: '#1b67d2',
-  colorInfo: '#1b67d2',
-  colorSuccess: '#4fcf0e',
-  colorWarning: '#e1a836',
-  colorError: '#da3437',
+  colorPrimary: '#3f51b5',
+  colorInfo: '#0288d1',
+  colorSuccess: '#2e7d32',
+  colorWarning: '#ed6c02',
+  colorError: '#d32f2f',
 }
 
 export const SeedTokenContext = createContext({ value: initialSeedTokenValue, update: () => void 0 })

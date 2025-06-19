@@ -1,4 +1,4 @@
-import { Button, Menu, Space, theme } from 'antd'
+import { Button, Menu, Space, theme, Tag, Alert, Typography } from 'antd'
 import { useState } from 'react'
 import useStyles, { Global } from './useStyles'
 import { AppstoreOutlined, MailOutlined } from '@ant-design/icons'
@@ -27,15 +27,31 @@ export default function Antd5Demo() {
   console.log('antd5 useStyles', t.appearance, t.themeMode)
 
   return (
-    <>
-      <div>Antd5Demo {count}</div>
+    <div>
+      <Typography.Title level={3}>Antd5Demo {count}</Typography.Title>
 
       <Global />
+
+      <div style={{ marginBottom: 16 }}>
+        <Tag color='success'>success</Tag>
+        <Tag color='processing'>processing</Tag>
+        <Tag color='error'>error</Tag>
+        <Tag color='warning'>warning</Tag>
+        <Tag color='default'>default</Tag>
+      </div>
+
+      <Space direction='vertical' style={{ width: '100%', marginBottom: 16 }}>
+        <Alert message='Success Text' type='success' />
+        <Alert message='Info Text' type='info' />
+        <Alert message='Warning Text' type='warning' />
+        <Alert message='Error Text' type='error' />
+      </Space>
 
       <Space>
         <Button type='primary' onClick={() => setCount(c => c + 1)}>
           官方组件
         </Button>
+        <Button type>自定义组件</Button>
         <button style={inlineStyle}>
           <span>自定义组件</span>
         </button>
@@ -64,6 +80,6 @@ export default function Antd5Demo() {
           <div className={cx(styles.baseCard, styles.primaryCard)}>主要卡片</div>
         </Space>
       </div>
-    </>
+    </div>
   )
 }

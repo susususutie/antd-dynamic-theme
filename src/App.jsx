@@ -1,6 +1,5 @@
-import Antd5Demo from './Antd5Demo'
-// import Antd4Demo from './Antd4Demo'
-import { ConfigProvider } from 'antd'
+import Demo from './Demo'
+import { ConfigProvider, App as AntApp } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import 'dayjs/locale/zh-cn' // for date-picker i18n
 import { useContext } from 'react'
@@ -9,6 +8,9 @@ import { SeedTokenContext } from './stores/seedTokenContext'
 import { ThemeModeContext } from './stores/themeModeContext'
 import { StyleProvider, legacyLogicalPropertiesTransformer } from '@ant-design/cssinjs'
 import { ThemeProvider } from 'antd-style'
+import { ConfigProvider as ConfigProvider4 } from 'antd4'
+import zhCN4 from 'antd4/es/locale/zh_CN'
+import 'antd4/dist/antd.variable.min.css'
 
 function App() {
   const { prefixCls, iconPrefixCls } = useContext(PrefixContext).value
@@ -26,12 +28,15 @@ function App() {
         token: seedToken,
       }}
     >
-      <ThemeProvider themeMode={themeMode}>
-        <StyleProvider hashPriority='high' transformers={[legacyLogicalPropertiesTransformer]}>
-          <Antd5Demo />
-          {/* <Antd4Demo /> */}
-        </StyleProvider>
-      </ThemeProvider>
+      <ConfigProvider4 locale={zhCN4}>
+        <ThemeProvider themeMode={themeMode}>
+          <StyleProvider hashPriority='high' transformers={[legacyLogicalPropertiesTransformer]}>
+            <AntApp>
+              <Demo />
+            </AntApp>
+          </StyleProvider>
+        </ThemeProvider>
+      </ConfigProvider4>
     </ConfigProvider>
   )
 }
