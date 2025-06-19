@@ -1,10 +1,13 @@
 import { updateCSS } from 'rc-util/lib/Dom/dynamicCSS'
 import { generate } from '@ant-design/colors'
 import { TinyColor } from '@ctrl/tinycolor'
+import { theme } from 'antd'
 
 const dynamicStyleMark = `-ant-${Date.now()}-${Math.random()}`
 
 function getStyle(prefixCls, seedToken) {
+  const token = theme.getDesignToken({token:seedToken})
+  console.log('token', token)
   const variables = {}
 
   const formatColor = (color, updater) => {
@@ -13,22 +16,22 @@ function getStyle(prefixCls, seedToken) {
     return clone.toRgbString()
   }
 
-  const fillColor = (colorVal, type) => {
-    const baseColor = new TinyColor(colorVal)
-    const colorPalettes = generate(baseColor.toRgbString())
-
-    variables[`${type}-color`] = formatColor(baseColor)
-    variables[`${type}-color-disabled`] = colorPalettes[1]
-    variables[`${type}-color-hover`] = colorPalettes[4]
-    variables[`${type}-color-active`] = colorPalettes[6]
-    variables[`${type}-color-outline`] = baseColor.clone().setAlpha(0.2).toRgbString()
-    variables[`${type}-color-deprecated-bg`] = colorPalettes[0]
-    variables[`${type}-color-deprecated-border`] = colorPalettes[2]
+  const fillColor = (type) => {
+    const upperType = type.charAt(0).toUpperCase() + type.slice(1)
+    const baseColor = new TinyColor(token[`color${upperType}`])
+    
+    variables[`${type}-color`] = token[`color${upperType}`]
+    variables[`${type}-color-disabled`] = token[`color${upperType}BgHover`]
+    variables[`${type}-color-hover`] = token[`color${upperType}TextHover`]
+    variables[`${type}-color-active`] = token[`color${upperType}Active`]
+    variables[`${type}-color-outline`] = baseColor.clone().setAlpha(0.2).toRgbString() // 用在 box-shadow 中
+    variables[`${type}-color-deprecated-bg`] = token[`color${upperType}Bg`]
+    variables[`${type}-color-deprecated-border`] = token[`color${upperType}Border`]
   }
 
   // ================ Primary Color ================
   if (seedToken.colorPrimary) {
-    fillColor(seedToken.colorPrimary, 'primary')
+    fillColor('primary')
 
     const colorPrimary = new TinyColor(seedToken.colorPrimary)
     const colorPrimaryList = generate(colorPrimary.toRgbString())
@@ -53,22 +56,22 @@ function getStyle(prefixCls, seedToken) {
 
   // ================ Success Color ================
   if (seedToken.colorSuccess) {
-    fillColor(seedToken.colorSuccess, 'success')
+    fillColor('success')
   }
 
   // ================ Warning Color ================
   if (seedToken.colorWarning) {
-    fillColor(seedToken.colorWarning, 'warning')
+    fillColor('warning')
   }
 
   // ================= Error Color =================
   if (seedToken.colorError) {
-    fillColor(seedToken.colorError, 'error')
+    fillColor('error')
   }
 
   // ================= Info Color ==================
   if (seedToken.colorInfo) {
-    fillColor(seedToken.colorInfo, 'info')
+    fillColor('info')
   }
 
   // Convert to css variables
@@ -88,12 +91,12 @@ function getStyle(prefixCls, seedToken) {
  */
 export default function updateAntd4CssVars(prefixCls, seedToken) {
   const style = getStyle(prefixCls, seedToken)
-  console.log('style', style === _result)
+  console.log('style', style)
   updateCSS(style, `${dynamicStyleMark}-dynamic-theme`)
 }
 
 const _result = `:root {
-    --ant-primary-color: rgb(63, 81, 181);
+    --ant-primary-color: #3f51b5;
 --ant-primary-color-disabled: #dadee8;
 --ant-primary-color-hover: #6374c2;
 --ant-primary-color-active: #2b378f;
@@ -117,28 +120,28 @@ const _result = `:root {
 --ant-primary-color-deprecated-f-12: rgba(63, 81, 181, 0.12);
 --ant-primary-color-active-deprecated-f-30: rgba(230, 235, 245, 0.3);
 --ant-primary-color-active-deprecated-d-02: rgb(223, 229, 242);
---ant-success-color: rgb(47, 173, 53);
+--ant-success-color: #2fad35;
 --ant-success-color-disabled: #cee0cc;
 --ant-success-color-hover: #50ba52;
 --ant-success-color-active: #1e8727;
 --ant-success-color-outline: rgba(47, 173, 53, 0.2);
 --ant-success-color-deprecated-bg: #e1eddf;
 --ant-success-color-deprecated-border: #a1d49f;
---ant-warning-color: rgb(237, 108, 2);
+--ant-warning-color: #ed6c02;
 --ant-warning-color-disabled: #ffdaa6;
 --ant-warning-color-hover: #fa8f2a;
 --ant-warning-color-active: #c75300;
 --ant-warning-color-outline: rgba(237, 108, 2, 0.2);
 --ant-warning-color-deprecated-bg: #fff5e6;
 --ant-warning-color-deprecated-border: #ffc47d;
---ant-error-color: rgb(211, 47, 47);
+--ant-error-color: #d32f2f;
 --ant-error-color-disabled: #ffe0db;
 --ant-error-color-hover: #e05a55;
 --ant-error-color-active: #ad1d22;
 --ant-error-color-outline: rgba(211, 47, 47, 0.2);
 --ant-error-color-deprecated-bg: #fff2f0;
 --ant-error-color-deprecated-border: #fab6af;
---ant-info-color: rgb(2, 136, 209);
+--ant-info-color: #0288d1;
 --ant-info-color-disabled: #a6ecff;
 --ant-info-color-hover: #26a4de;
 --ant-info-color-active: #0069ab;
