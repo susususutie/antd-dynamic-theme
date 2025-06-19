@@ -11,26 +11,14 @@ export default function StoreProvider({ children }) {
 
   const [seedTokenValue, setSeedTokenValue] = useState(initialSeedTokenValue)
   useEffect(() => {
-    updateAntd4CssVars('ant', {
-      primaryColor: initialSeedTokenValue.colorPrimary,
-      infoColor: initialSeedTokenValue.colorInfo,
-      successColor: initialSeedTokenValue.colorSuccess,
-      errorColor: initialSeedTokenValue.colorError,
-      warningColor: initialSeedTokenValue.colorWarning,
-    })
+    updateAntd4CssVars('ant', initialSeedTokenValue)
   }, [])
   const seedTokenContext = useMemo(
     () => ({
       value: seedTokenValue,
       update: seed => {
         setSeedTokenValue(seed)
-        updateAntd4CssVars('ant', {
-          primaryColor: seed.colorPrimary,
-          infoColor: seed.colorInfo,
-          successColor: seed.colorSuccess,
-          errorColor: seed.colorError,
-          warningColor: seed.colorWarning,
-        })
+        updateAntd4CssVars('ant', seed)
       },
     }),
     [seedTokenValue]

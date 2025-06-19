@@ -1,6 +1,6 @@
 import { updateCSS } from 'rc-util/lib/Dom/dynamicCSS'
-import { generate } from '@ant-design/colors';
-import { TinyColor } from '@ctrl/tinycolor';
+import { generate } from '@ant-design/colors'
+import { TinyColor } from '@ctrl/tinycolor'
 
 const dynamicStyleMark = `-ant-${Date.now()}-${Math.random()}`
 
@@ -27,24 +27,24 @@ function getStyle(prefixCls, seedToken) {
   }
 
   // ================ Primary Color ================
-  if (seedToken.primaryColor) {
-    fillColor(seedToken.primaryColor, 'primary')
+  if (seedToken.colorPrimary) {
+    fillColor(seedToken.colorPrimary, 'primary')
 
-    const primaryColor = new TinyColor(seedToken.primaryColor)
-    const primaryColors = generate(primaryColor.toRgbString())
+    const colorPrimary = new TinyColor(seedToken.colorPrimary)
+    const colorPrimaryList = generate(colorPrimary.toRgbString())
 
     // Legacy - We should use semantic naming standard
-    primaryColors.forEach((color, index) => {
+    colorPrimaryList.forEach((color, index) => {
       variables[`primary-${index + 1}`] = color
     })
     // Deprecated
-    variables['primary-color-deprecated-l-35'] = formatColor(primaryColor, c => c.lighten(35))
-    variables['primary-color-deprecated-l-20'] = formatColor(primaryColor, c => c.lighten(20))
-    variables['primary-color-deprecated-t-20'] = formatColor(primaryColor, c => c.tint(20))
-    variables['primary-color-deprecated-t-50'] = formatColor(primaryColor, c => c.tint(50))
-    variables['primary-color-deprecated-f-12'] = formatColor(primaryColor, c => c.setAlpha(c.getAlpha() * 0.12))
+    variables['primary-color-deprecated-l-35'] = formatColor(colorPrimary, c => c.lighten(35))
+    variables['primary-color-deprecated-l-20'] = formatColor(colorPrimary, c => c.lighten(20))
+    variables['primary-color-deprecated-t-20'] = formatColor(colorPrimary, c => c.tint(20))
+    variables['primary-color-deprecated-t-50'] = formatColor(colorPrimary, c => c.tint(50))
+    variables['primary-color-deprecated-f-12'] = formatColor(colorPrimary, c => c.setAlpha(c.getAlpha() * 0.12))
 
-    const primaryActiveColor = new TinyColor(primaryColors[0])
+    const primaryActiveColor = new TinyColor(colorPrimaryList[0])
     variables['primary-color-active-deprecated-f-30'] = formatColor(primaryActiveColor, c =>
       c.setAlpha(c.getAlpha() * 0.3)
     )
@@ -52,23 +52,23 @@ function getStyle(prefixCls, seedToken) {
   }
 
   // ================ Success Color ================
-  if (seedToken.successColor) {
-    fillColor(seedToken.successColor, 'success')
+  if (seedToken.colorSuccess) {
+    fillColor(seedToken.colorSuccess, 'success')
   }
 
   // ================ Warning Color ================
-  if (seedToken.warningColor) {
-    fillColor(seedToken.warningColor, 'warning')
+  if (seedToken.colorWarning) {
+    fillColor(seedToken.colorWarning, 'warning')
   }
 
   // ================= Error Color =================
-  if (seedToken.errorColor) {
-    fillColor(seedToken.errorColor, 'error')
+  if (seedToken.colorError) {
+    fillColor(seedToken.colorError, 'error')
   }
 
   // ================= Info Color ==================
-  if (seedToken.infoColor) {
-    fillColor(seedToken.infoColor, 'info')
+  if (seedToken.colorInfo) {
+    fillColor(seedToken.colorInfo, 'info')
   }
 
   // Convert to css variables
@@ -91,7 +91,6 @@ export default function updateAntd4CssVars(prefixCls, seedToken) {
   console.log('style', style === _result)
   updateCSS(style, `${dynamicStyleMark}-dynamic-theme`)
 }
-
 
 const _result = `:root {
     --ant-primary-color: rgb(63, 81, 181);
