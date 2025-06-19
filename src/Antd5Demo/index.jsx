@@ -1,6 +1,6 @@
 import { Button, Menu, Space, theme, Tag, Alert, Typography } from 'antd'
 import { useState } from 'react'
-import useStyles, { Global } from './useStyles'
+import { Global, useStyles } from './styles'
 import { AppstoreOutlined, MailOutlined } from '@ant-design/icons'
 
 export default function Antd5Demo() {

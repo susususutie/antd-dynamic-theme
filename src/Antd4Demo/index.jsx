@@ -1,10 +1,31 @@
 import { Button, Space, Menu, Tag, Alert } from 'antd4'
+import { theme } from 'antd'
 import { useState } from 'react'
 import { AppstoreOutlined, MailOutlined } from '@ant-design/icons'
 import { Typography } from 'antd4'
+import { useStyles } from './styles'
+import cls from './index.module.less'
 
 export default function Antd4Demo() {
   const [count, setCount] = useState(0)
+
+  const { token } = theme.useToken()
+  const inlineStyle = {
+    outline: 'none',
+    border: 'none',
+    fontWeight: 400,
+    fontSize: token.fontSize,
+    height: token.controlHeight,
+    padding: `${0}px ${token.paddingContentHorizontal - token.lineWidth}px`,
+    borderRadius: token.borderRadius,
+    color: token.colorTextLightSolid,
+    backgroundColor: token.colorPrimary,
+    cursor: 'pointer',
+  }
+
+  // 2. 单独样式文件 (css in js)
+  const { cx, styles, theme: t } = useStyles({ border: false })
+  console.log('antd5 useStyles', t.appearance, t.themeMode)
 
   return (
     <div>
@@ -29,7 +50,9 @@ export default function Antd4Demo() {
         <Button type='primary' onClick={() => setCount(c => c + 1)}>
           官方组件
         </Button>
-        <button>自定义组件</button>
+        <button style={inlineStyle}>
+          <span>自定义组件</span>
+        </button>
       </Space>
 
       <Menu
@@ -48,6 +71,20 @@ export default function Antd4Demo() {
           },
         ]}
       />
+
+      <div className={styles.container}>
+        <Space direction='vertical' style={{ width: '100%' }} size={16}>
+          <div className={styles.defaultCard}>普通卡片</div>
+          <div className={cx(styles.baseCard, styles.primaryCard)}>主要卡片</div>
+        </Space>
+      </div>
+
+      <div className={cls.container}>
+        <Space direction='vertical' style={{ width: '100%' }} size={16}>
+          <div className={cls.defaultCard}>普通卡片</div>
+          <div className={cx(cls.baseCard, cls.primaryCard)}>主要卡片</div>
+        </Space>
+      </div>
     </div>
   )
 }

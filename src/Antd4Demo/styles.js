@@ -3,7 +3,7 @@ import { createGlobalStyle, createStyles, css } from 'antd-style'
 /**
  * 1. 静态样式
  */
-const _useStyles = createStyles({
+export const useStaticStyles = createStyles({
   container: {
     padding: 24,
     background: 'lightslategrey',
@@ -22,7 +22,7 @@ const _useStyles = createStyles({
 /**
  * 2. 动态样式，消费token；也可传入参数 props 根据参数动态设置样式
  */
-const useStyles = createStyles((utils, props) => {
+export const useStyles = createStyles((utils, props) => {
   const { token, css } = utils // appearance, isDarkMode, prefixCls, iconPrefixCls 等
   const { border } = props
 

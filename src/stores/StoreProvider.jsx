@@ -3,7 +3,7 @@ import { initialSeedTokenValue, SeedTokenProvider } from './seedTokenContext'
 import { initialPrefixValue, PrefixProvider } from './prefixContext'
 import { initialThemeModeValue, ThemeModeProvider } from './themeModeContext'
 import { useEffect } from 'react'
-import { ConfigProvider as ConfigProvider4 } from 'antd4'
+import updateAntd4CssVars from '../updateAntd4CssVars'
 
 export default function StoreProvider({ children }) {
   const [prefixValue, setPrefixValue] = useState(initialPrefixValue)
@@ -11,15 +11,12 @@ export default function StoreProvider({ children }) {
 
   const [seedTokenValue, setSeedTokenValue] = useState(initialSeedTokenValue)
   useEffect(() => {
-    ConfigProvider4.config({
-      theme: {
-        primaryColor: initialSeedTokenValue.colorPrimary,
-        infoColor: initialSeedTokenValue.colorInfo,
-        successColor: initialSeedTokenValue.colorSuccess,
-        processingColor: initialSeedTokenValue.colorInfo,
-        errorColor: initialSeedTokenValue.colorError,
-        warningColor: initialSeedTokenValue.colorWarning,
-      },
+    updateAntd4CssVars('ant', {
+      primaryColor: initialSeedTokenValue.colorPrimary,
+      infoColor: initialSeedTokenValue.colorInfo,
+      successColor: initialSeedTokenValue.colorSuccess,
+      errorColor: initialSeedTokenValue.colorError,
+      warningColor: initialSeedTokenValue.colorWarning,
     })
   }, [])
   const seedTokenContext = useMemo(
@@ -27,15 +24,12 @@ export default function StoreProvider({ children }) {
       value: seedTokenValue,
       update: seed => {
         setSeedTokenValue(seed)
-        ConfigProvider4.config({
-          theme: {
-            primaryColor: seed.colorPrimary,
-            infoColor: seed.colorInfo,
-            successColor: seed.colorSuccess,
-            processingColor: seed.colorInfo,
-            errorColor: seed.colorError,
-            warningColor: seed.colorWarning,
-          },
+        updateAntd4CssVars('ant', {
+          primaryColor: seed.colorPrimary,
+          infoColor: seed.colorInfo,
+          successColor: seed.colorSuccess,
+          errorColor: seed.colorError,
+          warningColor: seed.colorWarning,
         })
       },
     }),
