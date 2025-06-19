@@ -8,7 +8,6 @@ export default function Antd5Demo() {
 
   // 1. 行内样式
   const { token } = theme.useToken()
-  console.log('antd5 useToken', token.appearance)
   const inlineStyle = {
     outline: 'none',
     border: 'none',
@@ -23,8 +22,7 @@ export default function Antd5Demo() {
   }
 
   // 2. 单独样式文件 (css in js)
-  const { cx, styles, theme: t } = useStyles({ border: false })
-  console.log('antd5 useStyles', t.appearance, t.themeMode)
+  const { cx, styles } = useStyles({ border: false })
 
   return (
     <div>

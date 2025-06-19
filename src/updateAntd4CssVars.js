@@ -3,13 +3,11 @@ import { generate } from '@ant-design/colors'
 import { TinyColor } from '@ctrl/tinycolor'
 import { theme } from 'antd'
 
-const dynamicStyleMark = `-ant-${Date.now()}-${Math.random()}`
-
-function getStyle(prefixCls, seedToken) {
-  // 暗色模式
-  // const token = theme.getDesignToken({ algorithm: theme.darkAlgorithm, token: seedToken })
-  const token = theme.getDesignToken({ algorithm: theme.darkAlgorithm, token: seedToken })
-  console.log('token', token)
+function getStyle(prefixCls, isDarkMode, seedToken) {
+  const token = theme.getDesignToken(
+    isDarkMode ? { algorithm: theme.darkAlgorithm, token: seedToken } : { token: seedToken }
+  )
+  console.log(`colorPrimary:${token.colorPrimary}, colorBgLayout:${token.colorBgLayout};`)
   const variables = {}
 
   const formatColor = (color, updater) => {
@@ -86,17 +84,6 @@ function getStyle(prefixCls, seedToken) {
   `.trim()
 }
 
-/**
- * 替换官方的 ConfigProvider4.config 方法
- * ConfigProvider4.config 的本质是根据传入主题生成一系列 CSS 变量，然后将 CSS 变量写入到 DOM 中
- * 但官方方法支持的变量较少，自定义方法中扩充了部分 antd5 的变量
- */
-export default function updateAntd4CssVars(prefixCls, seedToken) {
-  const style = getStyle(prefixCls, seedToken)
-  console.log('style', style)
-  updateCSS(style, `${dynamicStyleMark}-dynamic-theme`)
-}
-
 const _result = `:root {
     --ant-primary-color: #3f51b5;
 --ant-primary-color-disabled: #dadee8;
@@ -151,3 +138,31 @@ const _result = `:root {
 --ant-info-color-deprecated-bg: #e6faff;
 --ant-info-color-deprecated-border: #79d8f7;
   }`
+
+function genUpdateFun() {
+  const dynamicStyleMark = `-ant-${Date.now()}-${Math.random()}`
+  let latestArgsKey = ''
+
+  return (isDarkMode, seedToken) => {
+    console.log('updateAntd4CssVars', isDarkMode)
+
+    if (latestArgsKey) {
+      if (latestArgsKey === JSON.stringify([isDarkMode, seedToken])) {
+        return
+      }
+    }
+    latestArgsKey = JSON.stringify([isDarkMode, seedToken])
+    console.log('call updateAntd4CssVars')
+    const style = getStyle('ant', isDarkMode, seedToken)
+    updateCSS(style, `${dynamicStyleMark}-dynamic-theme`)
+  }
+}
+
+/**
+ * 替换官方的 ConfigProvider4.config 方法
+ * ConfigProvider4.config 的本质是根据传入主题生成一系列 CSS 变量，然后将 CSS 变量写入到 DOM 中
+ * 但官方方法支持的变量较少，自定义方法中扩充了部分 antd5 的变量
+ */
+const updateAntd4CssVars = genUpdateFun()
+
+export default updateAntd4CssVars

@@ -25,7 +25,6 @@ export default function Antd4Demo() {
 
   // 2. 单独样式文件 (css in js)
   const { cx, styles, theme: t } = useStyles({ border: false })
-  console.log('antd5 useStyles', t.appearance, t.themeMode)
 
   return (
     <div>
@@ -73,14 +72,14 @@ export default function Antd4Demo() {
         ]}
       />
 
-      <div className={styles.container} style={{marginBottom: 16}}>
+      <div className={styles.container} style={{ marginBottom: 16 }}>
         <Space direction='vertical' style={{ width: '100%' }} size={16}>
           <div className={styles.defaultCard}>普通卡片</div>
           <div className={cx(styles.baseCard, styles.primaryCard)}>主要卡片</div>
         </Space>
       </div>
 
-      <div className={cls.container} >
+      <div className={cls.container}>
         <Space direction='vertical' style={{ width: '100%' }} size={16}>
           <div className={cls.defaultCard}>普通卡片</div>
           <div className={cx(cls.baseCard, cls.primaryCard)}>主要卡片</div>
