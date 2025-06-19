@@ -1,7 +1,7 @@
 import { createGlobalStyle, createStyles, css } from 'antd-style'
 
 /**
- * 1. 静态样式
+ * 1. 静态样式。避免样式硬编码，应该动态使用token中的样式变量，特别是颜色，尺寸等明显特征
  */
 export const useStaticStyles = createStyles({
   container: {
