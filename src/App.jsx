@@ -10,7 +10,7 @@ import { StyleProvider, legacyLogicalPropertiesTransformer } from '@ant-design/c
 import { ThemeProvider } from 'antd-style'
 import { ConfigProvider as ConfigProvider4 } from 'antd4'
 import zhCN4 from 'antd4/es/locale/zh_CN'
-import 'antd4/dist/antd.variable.min.css'
+import './antd4.variable.css'
 
 function App() {
   const { prefixCls, iconPrefixCls } = useContext(PrefixContext).value
