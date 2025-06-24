@@ -27,7 +27,7 @@ function storeReducer(state, action) {
     case 'update-prefix': {
       return {
         ...state,
-        prefix: action.payload,
+        prefix: { ...state.prefix, ...action.payload },
       }
     }
     case 'update-themeMode': {
@@ -45,7 +45,7 @@ function storeReducer(state, action) {
       }
       return {
         ...state,
-        seedToken: action.payload,
+        seedToken: { ...state.seedToken, ...action.payload },
       }
     }
     default: {
