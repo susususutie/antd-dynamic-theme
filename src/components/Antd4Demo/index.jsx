@@ -1,7 +1,7 @@
 import { Button, Space, Menu, Tag, Alert } from 'antd4'
 import { theme } from 'antd'
 import { useState } from 'react'
-import { AppstoreOutlined, MailOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
 import { Typography } from 'antd4'
 import { useStyles } from './styles'
 import cls from './index.module.less'
@@ -45,14 +45,52 @@ export default function Antd4Demo() {
         <Alert message='Error Text' type='error' />
       </Space>
 
-      <Space>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+        <Button.Group>
+          <Button size='large'>1</Button>
+          <Button size='large'>2</Button>
+        </Button.Group>
+        <Button.Group>
+          <Button size='middle'>1</Button>
+          <Button size='middle'>2</Button>
+        </Button.Group>
+        <Button.Group>
+          <Button size='small'>1</Button>
+          <Button size='small'>2</Button>
+        </Button.Group>
+
+        <Button.Group size='large'>
+          <Button>1</Button>
+          <Button>2</Button>
+        </Button.Group>
+        <Button.Group size='middle'>
+          <Button>1</Button>
+          <Button>2</Button>
+        </Button.Group>
+        <Button.Group size='small'>
+          <Button>1</Button>
+          <Button>2</Button>
+        </Button.Group>
+
+        <Button icon={<UpOutlined />} size='large' shape='circle' />
+        <Button icon={<UpOutlined />} size='middle' shape='circle' />
+        <Button icon={<UpOutlined />} size='small' shape='circle' />
+
+        <Button icon={<UpOutlined />} size='large' shape='default' />
+        <Button icon={<UpOutlined />} size='middle' shape='default' />
+        <Button icon={<UpOutlined />} size='small' shape='default' />
+
+        <Button icon={<UpOutlined />} size='large' shape='round' />
+        <Button icon={<UpOutlined />} size='middle' shape='round' />
+        <Button icon={<UpOutlined />} size='small' shape='round' />
+
         <Button type='primary' onClick={() => setCount(c => c + 1)}>
           官方组件
         </Button>
         <button style={inlineStyle}>
           <span>自定义组件</span>
         </button>
-      </Space>
+      </div>
 
       <Menu
         theme={t.appearance}

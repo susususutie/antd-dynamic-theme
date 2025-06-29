@@ -74,6 +74,15 @@ function getStyle(prefixCls, isDarkMode, seedToken) {
     fillColor('info')
   }
 
+  // ================= Info Color ==================
+  if (seedToken.borderRadius) {
+    variables['border-radius'] = `${token.borderRadius}px`
+    variables['border-radius-xs'] = `${token.borderRadiusXS}px`
+    variables['border-radius-sm'] = `${token.borderRadiusSM}px`
+    variables['border-radius-lg'] = `${token.borderRadiusLG}px`
+    variables['border-radius-outer'] = `${token.borderRadiusOuter}px`
+  }
+
   // Convert to css variables
   const cssList = Object.keys(variables).map(key => `--${prefixCls}-${key}: ${variables[key]};`)
 

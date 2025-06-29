@@ -1,7 +1,7 @@
-import { Button, Menu, Space, theme, Tag, Alert, Typography } from 'antd'
+import { Button, Menu, Space, theme, Tag, Alert, Typography, Flex } from 'antd'
 import { useState } from 'react'
 import { Global, useStyles } from './styles'
-import { AppstoreOutlined, MailOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
 
 export default function Antd5Demo() {
   const [count, setCount] = useState(0)
@@ -45,14 +45,52 @@ export default function Antd5Demo() {
         <Alert message='Error Text' type='error' />
       </Space>
 
-      <Space>
+      <Flex wrap gap={8}>
+        <Space.Compact>
+          <Button size='large'>1</Button>
+          <Button size='large'>2</Button>
+        </Space.Compact>
+        <Space.Compact>
+          <Button size='middle'>1</Button>
+          <Button size='middle'>2</Button>
+        </Space.Compact>
+        <Space.Compact>
+          <Button size='small'>1</Button>
+          <Button size='small'>2</Button>
+        </Space.Compact>
+
+        <Space.Compact size='large'>
+          <Button>1</Button>
+          <Button>2</Button>
+        </Space.Compact>
+        <Space.Compact size='middle'>
+          <Button>1</Button>
+          <Button>2</Button>
+        </Space.Compact>
+        <Space.Compact size='small'>
+          <Button>1</Button>
+          <Button>2</Button>
+        </Space.Compact>
+
+        <Button icon={<UpOutlined />} size='large' shape='circle' />
+        <Button icon={<UpOutlined />} size='middle' shape='circle' />
+        <Button icon={<UpOutlined />} size='small' shape='circle' />
+
+        <Button icon={<UpOutlined />} size='large' shape='default' />
+        <Button icon={<UpOutlined />} size='middle' shape='default' />
+        <Button icon={<UpOutlined />} size='small' shape='default' />
+
+        <Button icon={<UpOutlined />} size='large' shape='round' />
+        <Button icon={<UpOutlined />} size='middle' shape='round' />
+        <Button icon={<UpOutlined />} size='small' shape='round' />
+
         <Button type='primary' onClick={() => setCount(c => c + 1)}>
           官方组件
         </Button>
         <button style={inlineStyle}>
           <span>自定义组件</span>
         </button>
-      </Space>
+      </Flex>
 
       <Menu
         mode='horizontal'

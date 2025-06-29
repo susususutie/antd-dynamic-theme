@@ -21,6 +21,7 @@ createRoot(document.getElementById('root')).render(
         colorSuccess: '#2fad35',
         colorWarning: '#ed6c02',
         colorError: '#d32f2f',
+        // borderRadius: 2,
       }}
       configProviderProps4={{
         locale: zhCN4,

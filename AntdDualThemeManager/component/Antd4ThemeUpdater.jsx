@@ -23,6 +23,7 @@ export default function Antd4ThemeUpdater() {
         colorWarning: token.colorWarning,
         colorError: token.colorError,
         colorInfo: token.colorInfo,
+        borderRadius: token.borderRadius,
       })
     }
   }, [
@@ -33,6 +34,7 @@ export default function Antd4ThemeUpdater() {
     token.colorWarning,
     token.colorError,
     token.colorInfo,
+    token.borderRadius,
   ])
 
   return null
