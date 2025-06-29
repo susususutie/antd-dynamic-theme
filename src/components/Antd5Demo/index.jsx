@@ -1,4 +1,18 @@
-import { Button, Menu, Space, theme, Tag, Alert, Typography, Flex, Select, Input, DatePicker } from 'antd'
+import {
+  Button,
+  Menu,
+  Space,
+  theme,
+  Tag,
+  Alert,
+  Typography,
+  Flex,
+  Select,
+  Input,
+  DatePicker,
+  Table,
+  Pagination,
+} from 'antd'
 import { useState } from 'react'
 import { Global, useStyles } from './styles'
 import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
@@ -25,7 +39,7 @@ export default function Antd5Demo() {
   const { cx, styles } = useStyles({ border: false })
 
   return (
-    <div>
+    <div style={{ width: 400 }}>
       <Typography.Title level={3}>Antd5Demo {count}</Typography.Title>
 
       <Global />
@@ -164,6 +178,69 @@ export default function Antd5Demo() {
         <DatePicker size='middle' />
         <DatePicker size='small' />
       </Flex>
+
+      <Table
+        bordered
+        size='large'
+        columns={[
+          { title: 'Name', dataIndex: 'name' },
+          { title: 'Age', dataIndex: 'age' },
+        ]}
+        dataSource={[
+          { name: 'John', age: 18 },
+          { name: 'Jim', age: 19 },
+        ]}
+      />
+      <Table
+        bordered
+        columns={[
+          { title: 'Name', dataIndex: 'name' },
+          { title: 'Age', dataIndex: 'age' },
+        ]}
+        dataSource={[
+          { name: 'John', age: 18 },
+          { name: 'Jim', age: 19 },
+        ]}
+      />
+      <Table
+        bordered
+        size='small'
+        columns={[
+          { title: 'Name', dataIndex: 'name' },
+          { title: 'Age', dataIndex: 'age' },
+        ]}
+        dataSource={[
+          { name: 'John', age: 18 },
+          { name: 'Jim', age: 19 },
+        ]}
+      />
+
+      <Pagination
+        style={{ width: '100%', marginBottom: 16 }}
+        simple
+        showPrevNextJumpers
+        showQuickJumper
+        showSizeChanger
+        defaultCurrent={1}
+        total={50}
+      />
+      <Pagination
+        style={{ width: '100%', marginBottom: 16 }}
+        size='small'
+        showPrevNextJumpers
+        showQuickJumper
+        showSizeChanger
+        defaultCurrent={1}
+        total={50}
+      />
+      <Pagination
+        style={{ width: '100%', marginBottom: 16 }}
+        showPrevNextJumpers
+        showQuickJumper
+        showSizeChanger
+        defaultCurrent={1}
+        total={50}
+      />
 
       <Menu
         mode='horizontal'

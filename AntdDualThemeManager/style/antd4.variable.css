@@ -20085,7 +20085,7 @@ textarea.ant-input {
   list-style: none;
   background-color: #fff;
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   outline: 0;
   cursor: pointer;
   -webkit-user-select: none;
@@ -20211,7 +20211,7 @@ textarea.ant-input {
   text-align: center;
   vertical-align: middle;
   list-style: none;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   cursor: pointer;
   transition: all 0.3s;
 }
@@ -20243,7 +20243,7 @@ textarea.ant-input {
   text-align: center;
   background-color: #fff;
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   outline: none;
   transition: all 0.3s;
 }
@@ -20312,7 +20312,7 @@ textarea.ant-input {
   background-color: #fff;
   background-image: none;
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   transition: all 0.3s;
   width: 50px;
   height: 32px;
@@ -20434,7 +20434,7 @@ textarea.ant-pagination-options-quick-jumper input {
   text-align: center;
   background-color: #fff;
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   outline: none;
   transition: border-color 0.3s;
 }
@@ -23634,12 +23634,12 @@ textarea.ant-mentions {
   position: relative;
   font-size: 14px;
   background: #fff;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius-lg);
 }
 .ant-table table {
   width: 100%;
   text-align: left;
-  border-radius: 2px 2px 0 0;
+  border-radius: var(--ant-border-radius-lg) var(--ant-border-radius-lg) 0 0;
   border-collapse: separate;
   border-spacing: 0;
 }
@@ -24224,17 +24224,17 @@ tr.ant-table-expanded-row .ant-descriptions-view table {
   border-radius: 0;
 }
 .ant-table-container {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
+  border-top-left-radius: var(--ant-border-radius-lg);
+  border-top-right-radius: var(--ant-border-radius-lg);
 }
 .ant-table-container table > thead > tr:first-child th:first-child {
-  border-top-left-radius: 2px;
+  border-top-left-radius: var(--ant-border-radius-lg);
 }
 .ant-table-container table > thead > tr:first-child th:last-child {
-  border-top-right-radius: 2px;
+  border-top-right-radius: var(--ant-border-radius-lg);
 }
 .ant-table-footer {
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 var(--ant-border-radius-lg) var(--ant-border-radius-lg);
 }
 .ant-table-wrapper-rtl {
   direction: rtl;

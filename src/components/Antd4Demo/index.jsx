@@ -1,4 +1,4 @@
-import { Button, Space, Menu, Tag, Alert, Typography, Select, Input } from 'antd4'
+import { Button, Space, Menu, Tag, Alert, Typography, Select, Input, Table, Pagination } from 'antd4'
 import { theme } from 'antd'
 import { useState } from 'react'
 import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
@@ -27,7 +27,7 @@ export default function Antd4Demo() {
   const { cx, styles, theme: t } = useStyles({ border: false })
 
   return (
-    <div>
+    <div style={{ width: 400 }}>
       <Typography.Title level={3}>Antd4Demo {count}</Typography.Title>
 
       <div style={{ marginBottom: 16 }}>
@@ -183,6 +183,46 @@ export default function Antd4Demo() {
       <DatePicker.TimePicker size='large' />
       <DatePicker.TimePicker size='middle' />
       <DatePicker.TimePicker size='small' />
+
+      <Table
+        bordered
+        size='large'
+        columns={[
+          { title: 'Name', dataIndex: 'name' },
+          { title: 'Age', dataIndex: 'age' },
+        ]}
+        dataSource={[
+          { name: 'John', age: 18 },
+          { name: 'Jim', age: 19 },
+        ]}
+      />
+      <Table
+        bordered
+        columns={[
+          { title: 'Name', dataIndex: 'name' },
+          { title: 'Age', dataIndex: 'age' },
+        ]}
+        dataSource={[
+          { name: 'John', age: 18 },
+          { name: 'Jim', age: 19 },
+        ]}
+      />
+      <Table
+        bordered
+        size='small'
+        columns={[
+          { title: 'Name', dataIndex: 'name' },
+          { title: 'Age', dataIndex: 'age' },
+        ]}
+        dataSource={[
+          { name: 'John', age: 18 },
+          { name: 'Jim', age: 19 },
+        ]}
+      />
+
+      <Pagination style={{ width: '100%', marginBottom: 16 }} simple showPrevNextJumpers showQuickJumper showSizeChanger defaultCurrent={1} total={50} />
+      <Pagination style={{ width: '100%', marginBottom: 16 }} size='small' showPrevNextJumpers showQuickJumper showSizeChanger defaultCurrent={1} total={50} />
+      <Pagination style={{ width: '100%', marginBottom: 16 }} showPrevNextJumpers showQuickJumper showSizeChanger defaultCurrent={1} total={50} />
 
       <Menu
         theme={t.appearance}
