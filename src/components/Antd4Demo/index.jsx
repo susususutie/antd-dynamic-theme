@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
 import { useStyles } from './styles'
 import cls from './index.module.less'
+import { DatePicker } from 'antd4'
 
 export default function Antd4Demo() {
   const [count, setCount] = useState(0)
@@ -164,17 +165,24 @@ export default function Antd4Demo() {
           <Input style={{ width: '20%' }} />
           <Input style={{ width: '30%' }} />
         </Input.Group>
-          <Input.Group compact size='default'>
+        <Input.Group compact size='default'>
           <Input style={{ width: '20%' }} />
           <Input style={{ width: '20%' }} />
           <Input style={{ width: '30%' }} />
         </Input.Group>
-          <Input.Group compact size='small'>
+        <Input.Group compact size='small'>
           <Input style={{ width: '20%' }} />
           <Input style={{ width: '20%' }} />
           <Input style={{ width: '30%' }} />
         </Input.Group>
       </div>
+      <DatePicker size='large' />
+      <DatePicker size='middle' />
+      <DatePicker size='small' />
+
+      <DatePicker.TimePicker size='large' />
+      <DatePicker.TimePicker size='middle' />
+      <DatePicker.TimePicker size='small' />
 
       <Menu
         theme={t.appearance}

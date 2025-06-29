@@ -1,4 +1,4 @@
-import { Button, Menu, Space, theme, Tag, Alert, Typography, Flex, Select, Input } from 'antd'
+import { Button, Menu, Space, theme, Tag, Alert, Typography, Flex, Select, Input, DatePicker } from 'antd'
 import { useState } from 'react'
 import { Global, useStyles } from './styles'
 import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
@@ -159,6 +159,10 @@ export default function Antd5Demo() {
         <Input.TextArea size='large' />
         <Input.TextArea size='middle' />
         <Input.TextArea size='small' />
+
+        <DatePicker size='large' />
+        <DatePicker size='middle' />
+        <DatePicker size='small' />
       </Flex>
 
       <Menu
