@@ -1,8 +1,7 @@
-import { Button, Space, Menu, Tag, Alert } from 'antd4'
+import { Button, Space, Menu, Tag, Alert, Typography, Select, Input } from 'antd4'
 import { theme } from 'antd'
 import { useState } from 'react'
 import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
-import { Typography, Select } from 'antd4'
 import { useStyles } from './styles'
 import cls from './index.module.less'
 
@@ -92,7 +91,7 @@ export default function Antd4Demo() {
         }))}
       />
 
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
         <Button.Group>
           <Button size='large'>1</Button>
           <Button size='large'>2</Button>
@@ -137,6 +136,24 @@ export default function Antd4Demo() {
         <button style={inlineStyle}>
           <span>自定义组件</span>
         </button>
+      </div>
+
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
+        <Input size='large' />
+        <Input size='middle' />
+        <Input size='small' />
+
+        <Input addonBefore='addonBefore' addonAfter='addonAfter' size='large' />
+        <Input addonBefore='addonBefore' addonAfter='addonAfter' size='middle' />
+        <Input addonBefore='addonBefore' addonAfter='addonAfter' size='small' />
+
+        <Input.Search addonBefore='addonBefore' size='large' />
+        <Input.Search addonBefore='addonBefore' size='middle' />
+        <Input.Search addonBefore='addonBefore' size='small' />
+
+        <Input.Password size='large' />
+        <Input.Password size='middle' />
+        <Input.Password size='small' />
       </div>
 
       <Menu

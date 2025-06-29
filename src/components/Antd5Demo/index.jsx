@@ -1,4 +1,4 @@
-import { Button, Menu, Space, theme, Tag, Alert, Typography, Flex, Select } from 'antd'
+import { Button, Menu, Space, theme, Tag, Alert, Typography, Flex, Select, Input } from 'antd'
 import { useState } from 'react'
 import { Global, useStyles } from './styles'
 import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
@@ -92,7 +92,7 @@ export default function Antd5Demo() {
         }))}
       />
 
-      <Flex wrap gap={8}>
+      <Flex wrap gap={8} style={{ marginBottom: 16 }}>
         <Space.Compact>
           <Button size='large'>1</Button>
           <Button size='large'>2</Button>
@@ -137,6 +137,24 @@ export default function Antd5Demo() {
         <button style={inlineStyle}>
           <span>自定义组件</span>
         </button>
+      </Flex>
+
+      <Flex vertical gap={8} style={{ marginBottom: 16 }}>
+        <Input size='large' />
+        <Input size='middle' />
+        <Input size='small' />
+
+        <Input addonBefore='addonBefore' addonAfter='addonAfter' size='large' />
+        <Input addonBefore='addonBefore' addonAfter='addonAfter' size='middle' />
+        <Input addonBefore='addonBefore' addonAfter='addonAfter' size='small' />
+        
+        <Input.Search addonBefore='addonBefore' size='large' />
+        <Input.Search addonBefore='addonBefore' size='middle' />
+        <Input.Search addonBefore='addonBefore' size='small' />
+
+        <Input.Password size='large' />
+        <Input.Password size='middle' />
+        <Input.Password size='small' />
       </Flex>
 
       <Menu

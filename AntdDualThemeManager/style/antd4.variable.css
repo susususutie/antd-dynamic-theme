@@ -18913,7 +18913,7 @@ textarea.ant-input-affix-wrapper {
   background-color: #fff;
   background-image: none;
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   transition: all 0.3s;
 }
 .ant-input::-moz-placeholder {
@@ -19007,9 +19007,11 @@ textarea.ant-input {
 .ant-input-lg {
   padding: 6.5px 11px;
   font-size: 16px;
+  border-radius: var(--ant-border-radius-lg);
 }
 .ant-input-sm {
   padding: 0px 7px;
+  border-radius: var(--ant-border-radius-sm);
 }
 .ant-input-rtl {
   direction: rtl;
@@ -19086,8 +19088,14 @@ textarea.ant-input {
   text-align: center;
   background-color: #fafafa;
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   transition: all 0.3s;
+}
+.ant-input-group-wrapper-lg .ant-input-group-addon {
+  border-radius: var(--ant-border-radius-lg);
+}
+.ant-input-group-wrapper-sm .ant-input-group-addon {
+  border-radius: var(--ant-border-radius-sm);
 }
 .ant-input-group-addon .ant-select {
   margin: -5px -11px;
@@ -19164,9 +19172,10 @@ textarea.ant-input {
   border-bottom-right-radius: 0;
 }
 .ant-input-search .ant-input-group .ant-input-affix-wrapper:not(:last-child) {
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
+  border-top-left-radius: var(--ant-border-radius);
+  border-bottom-left-radius: var(--ant-border-radius);
 }
+
 .ant-input-group .ant-input-affix-wrapper:not(:first-child),
 .ant-input-search .ant-input-group .ant-input-affix-wrapper:not(:first-child) {
   border-top-left-radius: 0;
@@ -19246,16 +19255,16 @@ textarea.ant-input {
 .ant-input-group.ant-input-group-compact > .ant-select:first-child > .ant-select-selector,
 .ant-input-group.ant-input-group-compact > .ant-select-auto-complete:first-child .ant-input,
 .ant-input-group.ant-input-group-compact > .ant-cascader-picker:first-child .ant-input {
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
+  border-top-left-radius: var(--ant-border-radius);
+  border-bottom-left-radius: var(--ant-border-radius);
 }
 .ant-input-group.ant-input-group-compact > *:last-child,
 .ant-input-group.ant-input-group-compact > .ant-select:last-child > .ant-select-selector,
 .ant-input-group.ant-input-group-compact > .ant-cascader-picker:last-child .ant-input,
 .ant-input-group.ant-input-group-compact > .ant-cascader-picker-focused:last-child .ant-input {
   border-right-width: 1px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
+  border-top-right-radius: var(--ant-border-radius);
+  border-bottom-right-radius: var(--ant-border-radius);
 }
 .ant-input-group.ant-input-group-compact > .ant-select-auto-complete .ant-input {
   vertical-align: top;
@@ -19270,11 +19279,11 @@ textarea.ant-input {
   border-radius: 0;
 }
 .ant-input-group.ant-input-group-compact .ant-input-group-wrapper:not(:last-child).ant-input-search > .ant-input-group > .ant-input {
-  border-radius: 2px 0 0 2px;
+  border-radius: var(--ant-border-radius) 0 0 var(--ant-border-radius);
 }
 .ant-input-group > .ant-input-rtl:first-child,
 .ant-input-group-rtl .ant-input-group-addon:first-child {
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 var(--ant-border-radius) var(--ant-border-radius) 0;
 }
 .ant-input-group-rtl .ant-input-group-addon:first-child {
   border-right: 1px solid #d9d9d9;
@@ -19283,17 +19292,17 @@ textarea.ant-input {
 .ant-input-group-rtl .ant-input-group-addon:last-child {
   border-right: 0;
   border-left: 1px solid #d9d9d9;
-  border-radius: 2px 0 0 2px;
+  border-radius: var(--ant-border-radius) 0 0 var(--ant-border-radius);
 }
 .ant-input-group-rtl.ant-input-group > .ant-input:last-child,
 .ant-input-group-rtl.ant-input-group-addon:last-child {
-  border-radius: 2px 0 0 2px;
+  border-radius: var(--ant-border-radius) 0 0 var(--ant-border-radius);
 }
 .ant-input-group-rtl.ant-input-group .ant-input-affix-wrapper:not(:first-child) {
-  border-radius: 2px 0 0 2px;
+  border-radius: var(--ant-border-radius) 0 0 var(--ant-border-radius);
 }
 .ant-input-group-rtl.ant-input-group .ant-input-affix-wrapper:not(:last-child) {
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 var(--ant-border-radius) var(--ant-border-radius) 0;
 }
 .ant-input-group-rtl.ant-input-group.ant-input-group-compact > *:not(:last-child) {
   margin-right: 0;
@@ -19304,7 +19313,7 @@ textarea.ant-input {
 .ant-input-group-rtl.ant-input-group.ant-input-group-compact > .ant-select:first-child > .ant-select-selector,
 .ant-input-group-rtl.ant-input-group.ant-input-group-compact > .ant-select-auto-complete:first-child .ant-input,
 .ant-input-group-rtl.ant-input-group.ant-input-group-compact > .ant-cascader-picker:first-child .ant-input {
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 var(--ant-border-radius) var(--ant-border-radius) 0;
 }
 .ant-input-group-rtl.ant-input-group.ant-input-group-compact > *:last-child,
 .ant-input-group-rtl.ant-input-group.ant-input-group-compact > .ant-select:last-child > .ant-select-selector,
@@ -19312,14 +19321,14 @@ textarea.ant-input {
 .ant-input-group-rtl.ant-input-group.ant-input-group-compact > .ant-cascader-picker:last-child .ant-input,
 .ant-input-group-rtl.ant-input-group.ant-input-group-compact > .ant-cascader-picker-focused:last-child .ant-input {
   border-left-width: 1px;
-  border-radius: 2px 0 0 2px;
+  border-radius: var(--ant-border-radius) 0 0 var(--ant-border-radius);
 }
 .ant-input-group.ant-input-group-compact .ant-input-group-wrapper-rtl + .ant-input-group-wrapper-rtl {
   margin-right: -1px;
   margin-left: 0;
 }
 .ant-input-group.ant-input-group-compact .ant-input-group-wrapper-rtl:not(:last-child).ant-input-search > .ant-input-group > .ant-input {
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 var(--ant-border-radius) var(--ant-border-radius) 0;
 }
 .ant-input-group-wrapper {
   display: inline-block;
@@ -19424,7 +19433,13 @@ textarea.ant-input {
 .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
   padding-top: 0;
   padding-bottom: 0;
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 var(--ant-border-radius) var(--ant-border-radius) 0;
+}
+.ant-input-search-large > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+  border-radius: 0 var(--ant-border-radius-lg) var(--ant-border-radius-lg) 0;
+}
+.ant-input-search-small > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+  border-radius: 0 var(--ant-border-radius-sm) var(--ant-border-radius-sm) 0;
 }
 .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button:not(.ant-btn-primary) {
   color: rgba(0, 0, 0, 0.45);
