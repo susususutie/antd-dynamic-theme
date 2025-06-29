@@ -28,3 +28,8 @@ const GlobalStyle = createGlobalStyle``
 1. 尽量使用 antd@5 组件
 2. 和 antd@5 一致，使用 `css in js`，旧的 css 文件中改为 css 变量的写法，且逐步优化
 3. 暗色模式下样式一致性依旧存在问题，所以还是尽量使用 antd@5 的写法，新文件新写法，旧文件逐步替换
+
+
+## TODO
+
+重新生成一份 antd4.variable.css 文件，支持动态 border-radius

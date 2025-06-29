@@ -15,13 +15,13 @@ createRoot(document.getElementById('root')).render(
       locale={zhCN}
       // prefixCls='asd'
       // iconPrefixCls='zxc'
-      // seedToken={{
-      //   colorPrimary: '#3f51b5',
-      //   colorInfo: '#0288d1',
-      //   colorSuccess: '#2fad35',
-      //   colorWarning: '#ed6c02',
-      //   colorError: '#d32f2f',
-      // }}
+      seedToken={{
+        colorPrimary: '#3f51b5',
+        colorInfo: '#0288d1',
+        colorSuccess: '#2fad35',
+        colorWarning: '#ed6c02',
+        colorError: '#d32f2f',
+      }}
       configProviderProps4={{
         locale: zhCN4,
       }}
