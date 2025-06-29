@@ -12,6 +12,7 @@ import {
   DatePicker,
   Table,
   Pagination,
+  Dropdown,
 } from 'antd'
 import { useState } from 'react'
 import { Global, useStyles } from './styles'
@@ -241,6 +242,18 @@ export default function Antd5Demo() {
         defaultCurrent={1}
         total={50}
       />
+
+      <Dropdown
+        menu={{
+          selectedKeys: ['1'],
+          items: Array.from({ length: 5 }).map((_, i) => ({
+            key: `${i}`,
+            label: `Option ${i}`,
+          })),
+        }}
+      >
+        <Button>Actions</Button>
+      </Dropdown>
 
       <Menu
         mode='horizontal'

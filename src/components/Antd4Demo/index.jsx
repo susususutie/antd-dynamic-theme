@@ -1,4 +1,4 @@
-import { Button, Space, Menu, Tag, Alert, Typography, Select, Input, Table, Pagination } from 'antd4'
+import { Button, Space, Menu, Tag, Alert, Typography, Select, Input, Table, Pagination, Dropdown } from 'antd4'
 import { theme } from 'antd'
 import { useState } from 'react'
 import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
@@ -220,9 +220,44 @@ export default function Antd4Demo() {
         ]}
       />
 
-      <Pagination style={{ width: '100%', marginBottom: 16 }} simple showPrevNextJumpers showQuickJumper showSizeChanger defaultCurrent={1} total={50} />
-      <Pagination style={{ width: '100%', marginBottom: 16 }} size='small' showPrevNextJumpers showQuickJumper showSizeChanger defaultCurrent={1} total={50} />
-      <Pagination style={{ width: '100%', marginBottom: 16 }} showPrevNextJumpers showQuickJumper showSizeChanger defaultCurrent={1} total={50} />
+      <Pagination
+        style={{ width: '100%', marginBottom: 16 }}
+        simple
+        showPrevNextJumpers
+        showQuickJumper
+        showSizeChanger
+        defaultCurrent={1}
+        total={50}
+      />
+      <Pagination
+        style={{ width: '100%', marginBottom: 16 }}
+        size='small'
+        showPrevNextJumpers
+        showQuickJumper
+        showSizeChanger
+        defaultCurrent={1}
+        total={50}
+      />
+      <Pagination
+        style={{ width: '100%', marginBottom: 16 }}
+        showPrevNextJumpers
+        showQuickJumper
+        showSizeChanger
+        defaultCurrent={1}
+        total={50}
+      />
+
+      <Dropdown
+        menu={{
+          selectedKeys: ['1'],
+          items: Array.from({ length: 5 }).map((_, i) => ({
+            key: `${i}`,
+            label: `Option ${i}`,
+          })),
+        }}
+      >
+        <Button>Actions</Button>
+      </Dropdown>
 
       <Menu
         theme={t.appearance}
