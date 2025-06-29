@@ -1,9 +1,9 @@
 import { useMemo, useReducer } from 'react'
-import { initialSeedTokenValue, SeedTokenProvider } from './seedTokenContext'
-import { initialPrefixValue, PrefixProvider } from './prefixContext'
-import { initialThemeModeValue, ThemeModeProvider } from './themeModeContext'
+import { initialSeedTokenValue, SeedTokenProvider } from '../context/seedTokenContext'
+import { initialPrefixValue, PrefixProvider } from '../context/prefixContext'
+import { initialThemeModeValue, ThemeModeProvider } from '../context/themeModeContext'
 import { useEffect } from 'react'
-import updateAntd4CssVars from '../updateAntd4CssVars'
+import updateAntd4CssVars from '../util/updateAntd4CssVars'
 import { ConfigProvider, App as AntApp } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import 'dayjs/locale/zh-cn' // for date-picker i18n
@@ -11,7 +11,7 @@ import { StyleProvider, legacyLogicalPropertiesTransformer } from '@ant-design/c
 import { ThemeProvider } from 'antd-style'
 import { ConfigProvider as ConfigProvider4 } from 'antd4'
 import zhCN4 from 'antd4/es/locale/zh_CN'
-import '../antd4.variable.css'
+import '../style/antd4.variable.css'
 import ThemeAppearance from './ThemeAppearance'
 
 const initialStoreState = {

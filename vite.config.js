@@ -11,6 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
+      'antd-dual-theme-manager': resolve(__dirname, './AntdDualThemeManager'),
     },
   },
   define: {

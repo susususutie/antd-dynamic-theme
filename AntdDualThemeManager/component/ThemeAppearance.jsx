@@ -1,9 +1,9 @@
 import { useTheme } from 'antd-style'
 import { useContext } from 'react'
 import { useEffect } from 'react'
-import { ThemeModeContext } from './themeModeContext'
-import { SeedTokenContext } from './seedTokenContext'
-import updateAntd4CssVars from '../updateAntd4CssVars'
+import { ThemeModeContext } from '../context/themeModeContext'
+import { SeedTokenContext } from '../context/seedTokenContext'
+import updateAntd4CssVars from '../util/updateAntd4CssVars'
 
 export default function ThemeAppearance() {
   const isDarkMode = useTheme().isDarkMode
