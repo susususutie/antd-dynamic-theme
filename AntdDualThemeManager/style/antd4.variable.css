@@ -9782,7 +9782,7 @@ span.ant-radio + * {
   list-style-type: none;
   background-color: #fff;
   background-clip: padding-box;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   outline: none;
   box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
 }
@@ -9852,7 +9852,7 @@ span.ant-radio + * {
 }
 .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab,
 .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab {
-  border-radius: 2px 2px 0 0;
+  border-radius: var(--ant-border-radius) var(--ant-border-radius) 0 0;
 }
 .ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab-active,
 .ant-tabs-card.ant-tabs-top > div > .ant-tabs-nav .ant-tabs-tab-active {
@@ -9860,7 +9860,7 @@ span.ant-radio + * {
 }
 .ant-tabs-card.ant-tabs-bottom > .ant-tabs-nav .ant-tabs-tab,
 .ant-tabs-card.ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-tab {
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 var(--ant-border-radius) var(--ant-border-radius);
 }
 .ant-tabs-card.ant-tabs-bottom > .ant-tabs-nav .ant-tabs-tab-active,
 .ant-tabs-card.ant-tabs-bottom > div > .ant-tabs-nav .ant-tabs-tab-active {
@@ -9870,11 +9870,11 @@ span.ant-radio + * {
 .ant-tabs-card.ant-tabs-right > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab,
 .ant-tabs-card.ant-tabs-left > div > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab,
 .ant-tabs-card.ant-tabs-right > div > .ant-tabs-nav .ant-tabs-tab + .ant-tabs-tab {
-  margin-top: 2px;
+  margin-top: var(--ant-border-radius);
 }
 .ant-tabs-card.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab,
 .ant-tabs-card.ant-tabs-left > div > .ant-tabs-nav .ant-tabs-tab {
-  border-radius: 2px 0 0 2px;
+  border-radius: var(--ant-border-radius) 0 0 var(--ant-border-radius);
 }
 .ant-tabs-card.ant-tabs-left > .ant-tabs-nav .ant-tabs-tab-active,
 .ant-tabs-card.ant-tabs-left > div > .ant-tabs-nav .ant-tabs-tab-active {
@@ -9882,7 +9882,7 @@ span.ant-radio + * {
 }
 .ant-tabs-card.ant-tabs-right > .ant-tabs-nav .ant-tabs-tab,
 .ant-tabs-card.ant-tabs-right > div > .ant-tabs-nav .ant-tabs-tab {
-  border-radius: 0 2px 2px 0;
+  border-radius: 0 var(--ant-border-radius) var(--ant-border-radius) 0;
 }
 .ant-tabs-card.ant-tabs-right > .ant-tabs-nav .ant-tabs-tab-active,
 .ant-tabs-card.ant-tabs-right > div > .ant-tabs-nav .ant-tabs-tab-active {
@@ -9970,7 +9970,7 @@ span.ant-radio + * {
   padding: 0 8px;
   background: #fafafa;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 2px 2px 0 0;
+  border-radius: var(--ant-border-radius) var(--ant-border-radius) 0 0;
   outline: none;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);

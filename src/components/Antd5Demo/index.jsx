@@ -13,6 +13,7 @@ import {
   Table,
   Pagination,
   Dropdown,
+  Tabs,
 } from 'antd'
 import { useState } from 'react'
 import { Global, useStyles } from './styles'
@@ -255,6 +256,15 @@ export default function Antd5Demo() {
         <Button>Actions</Button>
       </Dropdown>
 
+      <Tabs
+        type='card'
+        items={Array.from({ length: 10 }).map((_, i) => ({
+          key: `${i}`,
+          label: `Tab ${i}`,
+          children: `Content of Tab Pane ${i}`,
+        }))}
+      />
+      
       <Menu
         mode='horizontal'
         items={[

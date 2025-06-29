@@ -5,6 +5,7 @@ import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
 import { useStyles } from './styles'
 import cls from './index.module.less'
 import { DatePicker } from 'antd4'
+import { Tabs } from 'antd4'
 
 export default function Antd4Demo() {
   const [count, setCount] = useState(0)
@@ -258,6 +259,15 @@ export default function Antd4Demo() {
       >
         <Button>Actions</Button>
       </Dropdown>
+
+      <Tabs
+        type='card'
+        items={Array.from({ length: 10 }).map((_, i) => ({
+          key: `${i}`,
+          label: `Tab ${i}`,
+          children: `Content of Tab Pane ${i}`,
+        }))}
+      />
 
       <Menu
         theme={t.appearance}
