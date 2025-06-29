@@ -1,23 +1,14 @@
 import { useMemo, useReducer } from 'react'
-import { initialSeedTokenValue, SeedTokenProvider } from '../context/seedTokenContext'
+import { SeedTokenProvider } from '../context/seedTokenContext'
 import { initialPrefixValue, PrefixProvider } from '../context/prefixContext'
 import { initialThemeModeValue, ThemeModeProvider } from '../context/themeModeContext'
 import { useEffect } from 'react'
 import updateAntd4CssVars from '../util/updateAntd4CssVars'
 import { ConfigProvider } from 'antd'
-import zhCN from 'antd/locale/zh_CN'
-import 'dayjs/locale/zh-cn' // for date-picker i18n
 import { ThemeProvider } from 'antd-style'
 import { ConfigProvider as ConfigProvider4 } from 'antd4'
-import zhCN4 from 'antd4/es/locale/zh_CN'
 import '../style/antd4.variable.css'
 import Antd4ThemeUpdater from './Antd4ThemeUpdater'
-
-const initialStoreState = {
-  prefix: initialPrefixValue,
-  themeMode: initialThemeModeValue,
-  seedToken: initialSeedTokenValue,
-}
 
 function storeReducer(state, action) {
   // 1. themeMode !== 'auto'，能确定 appearance 则直接调用 updateAntd4Theme
@@ -54,9 +45,21 @@ function storeReducer(state, action) {
 }
 
 export default function StoreProvider(props) {
-  const { children } = props
+  const {
+    children,
+    themeMode = initialThemeModeValue,
+    seedToken,
+    configProviderProps4,
+    prefixCls = initialPrefixValue.prefixCls,
+    iconPrefixCls = initialPrefixValue.iconPrefixCls,
+    ...configProviderProps
+  } = props
 
-  const [storeState, dispatch] = useReducer(storeReducer, initialStoreState)
+  const [storeState, dispatch] = useReducer(storeReducer, {
+    prefix: { prefixCls, iconPrefixCls },
+    themeMode,
+    seedToken,
+  })
 
   const prefixContext = useMemo(
     () => ({ value: storeState.prefix, update: prefix => dispatch({ type: 'update-prefix', payload: prefix }) }),
@@ -86,14 +89,15 @@ export default function StoreProvider(props) {
       <SeedTokenProvider value={seedTokenContext}>
         <ThemeModeProvider value={themeModeContext}>
           <ConfigProvider
+            {...configProviderProps}
             prefixCls={storeState.prefix.prefixCls}
             iconPrefixCls={storeState.prefix.iconPrefixCls}
-            locale={zhCN}
             theme={{
+              ...configProviderProps?.token,
               token: storeState.seedToken,
             }}
           >
-            <ConfigProvider4 locale={zhCN4}>
+            <ConfigProvider4 {...configProviderProps4}>
               <ThemeProvider themeMode={storeState.themeMode}>
                 <Antd4ThemeUpdater />
                 {children}
