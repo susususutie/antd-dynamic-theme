@@ -144,7 +144,7 @@ function genUpdateFun() {
   let latestArgsKey = ''
 
   return (isDarkMode, seedToken) => {
-    console.log('updateAntd4CssVars', isDarkMode)
+    console.log('updateAntd4CssVars 检查是否需要更新样式文件')
 
     if (latestArgsKey) {
       if (latestArgsKey === JSON.stringify([isDarkMode, seedToken])) {
@@ -152,7 +152,7 @@ function genUpdateFun() {
       }
     }
     latestArgsKey = JSON.stringify([isDarkMode, seedToken])
-    console.log('call updateAntd4CssVars')
+    console.log('更新样式文件')
     const style = getStyle('ant', isDarkMode, seedToken)
     updateCSS(style, `${dynamicStyleMark}-dynamic-theme`)
   }

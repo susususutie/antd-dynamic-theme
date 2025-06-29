@@ -4,15 +4,14 @@ import { initialPrefixValue, PrefixProvider } from '../context/prefixContext'
 import { initialThemeModeValue, ThemeModeProvider } from '../context/themeModeContext'
 import { useEffect } from 'react'
 import updateAntd4CssVars from '../util/updateAntd4CssVars'
-import { ConfigProvider, App as AntApp } from 'antd'
+import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import 'dayjs/locale/zh-cn' // for date-picker i18n
-import { StyleProvider, legacyLogicalPropertiesTransformer } from '@ant-design/cssinjs'
 import { ThemeProvider } from 'antd-style'
 import { ConfigProvider as ConfigProvider4 } from 'antd4'
 import zhCN4 from 'antd4/es/locale/zh_CN'
 import '../style/antd4.variable.css'
-import ThemeAppearance from './ThemeAppearance'
+import Antd4ThemeUpdater from './Antd4ThemeUpdater'
 
 const initialStoreState = {
   prefix: initialPrefixValue,
@@ -54,7 +53,9 @@ function storeReducer(state, action) {
   }
 }
 
-export default function StoreProvider({ children }) {
+export default function StoreProvider(props) {
+  const { children } = props
+
   const [storeState, dispatch] = useReducer(storeReducer, initialStoreState)
 
   const prefixContext = useMemo(
@@ -94,10 +95,8 @@ export default function StoreProvider({ children }) {
           >
             <ConfigProvider4 locale={zhCN4}>
               <ThemeProvider themeMode={storeState.themeMode}>
-                <ThemeAppearance />
-                <StyleProvider hashPriority='high' transformers={[legacyLogicalPropertiesTransformer]}>
-                  <AntApp>{children}</AntApp>
-                </StyleProvider>
+                <Antd4ThemeUpdater />
+                {children}
               </ThemeProvider>
             </ConfigProvider4>
           </ConfigProvider>
