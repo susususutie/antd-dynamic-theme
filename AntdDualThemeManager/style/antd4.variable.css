@@ -18627,9 +18627,15 @@ textarea.ant-input-number {
   background-color: #fff;
   background-image: none;
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   transition: all 0.3s;
   display: inline-flex;
+}
+.ant-input-affix-wrapper-lg {
+  border-radius: var(--ant-border-radius-lg);
+}
+.ant-input-affix-wrapper-sm {
+  border-radius: var(--ant-border-radius-sm);
 }
 .ant-input-affix-wrapper::-moz-placeholder {
   color: #bfbfbf;
@@ -19258,6 +19264,20 @@ textarea.ant-input {
   border-top-left-radius: var(--ant-border-radius);
   border-bottom-left-radius: var(--ant-border-radius);
 }
+.ant-input-group-lg.ant-input-group-compact > *:first-child,
+.ant-input-group-lg.ant-input-group-compact > .ant-select:first-child > .ant-select-selector,
+.ant-input-group-lg.ant-input-group-compact > .ant-select-auto-complete:first-child .ant-input,
+.ant-input-group-lg.ant-input-group-compact > .ant-cascader-picker:first-child .ant-input {
+  border-top-left-radius: var(--ant-border-radius-lg);
+  border-bottom-left-radius: var(--ant-border-radius-lg);
+}
+.ant-input-group-sm.ant-input-group-compact > *:first-child,
+.ant-input-group-sm.ant-input-group-compact > .ant-select:first-child > .ant-select-selector,
+.ant-input-group-sm.ant-input-group-compact > .ant-select-auto-complete:first-child .ant-input,
+.ant-input-group-sm.ant-input-group-compact > .ant-cascader-picker:first-child .ant-input {
+  border-top-left-radius: var(--ant-border-radius-sm);
+  border-bottom-left-radius: var(--ant-border-radius-sm);
+}
 .ant-input-group.ant-input-group-compact > *:last-child,
 .ant-input-group.ant-input-group-compact > .ant-select:last-child > .ant-select-selector,
 .ant-input-group.ant-input-group-compact > .ant-cascader-picker:last-child .ant-input,
@@ -19265,6 +19285,20 @@ textarea.ant-input {
   border-right-width: 1px;
   border-top-right-radius: var(--ant-border-radius);
   border-bottom-right-radius: var(--ant-border-radius);
+}
+.ant-input-group-lg.ant-input-group-compact > *:last-child,
+.ant-input-group-lg.ant-input-group-compact > .ant-select:last-child > .ant-select-selector,
+.ant-input-group-lg.ant-input-group-compact > .ant-cascader-picker:last-child .ant-input,
+.ant-input-group-lg.ant-input-group-compact > .ant-cascader-picker-focused:last-child .ant-input {
+  border-top-right-radius: var(--ant-border-radius-lg);
+  border-bottom-right-radius: var(--ant-border-radius-lg);
+}
+.ant-input-group-sm.ant-input-group-compact > *:last-child,
+.ant-input-group-sm.ant-input-group-compact > .ant-select:last-child > .ant-select-selector,
+.ant-input-group-sm.ant-input-group-compact > .ant-cascader-picker:last-child .ant-input,
+.ant-input-group-sm.ant-input-group-compact > .ant-cascader-picker-focused:last-child .ant-input {
+  border-top-right-radius: var(--ant-border-radius-sm);
+  border-bottom-right-radius: var(--ant-border-radius-sm);
 }
 .ant-input-group.ant-input-group-compact > .ant-select-auto-complete .ant-input {
   vertical-align: top;
@@ -19280,6 +19314,12 @@ textarea.ant-input {
 }
 .ant-input-group.ant-input-group-compact .ant-input-group-wrapper:not(:last-child).ant-input-search > .ant-input-group > .ant-input {
   border-radius: var(--ant-border-radius) 0 0 var(--ant-border-radius);
+}
+.ant-input-group-lg.ant-input-group-compact .ant-input-group-wrapper:not(:last-child).ant-input-search > .ant-input-group > .ant-input {
+  border-radius: var(--ant-border-radius-lg) 0 0 var(--ant-border-radius-lg);
+}
+.ant-input-group-sm.ant-input-group-compact .ant-input-group-wrapper:not(:last-child).ant-input-search > .ant-input-group > .ant-input {
+  border-radius: var(--ant-border-radius-sm) 0 0 var(--ant-border-radius-sm);
 }
 .ant-input-group > .ant-input-rtl:first-child,
 .ant-input-group-rtl .ant-input-group-addon:first-child {

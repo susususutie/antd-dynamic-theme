@@ -147,7 +147,7 @@ export default function Antd5Demo() {
         <Input addonBefore='addonBefore' addonAfter='addonAfter' size='large' />
         <Input addonBefore='addonBefore' addonAfter='addonAfter' size='middle' />
         <Input addonBefore='addonBefore' addonAfter='addonAfter' size='small' />
-        
+
         <Input.Search addonBefore='addonBefore' size='large' />
         <Input.Search addonBefore='addonBefore' size='middle' />
         <Input.Search addonBefore='addonBefore' size='small' />
@@ -155,6 +155,10 @@ export default function Antd5Demo() {
         <Input.Password size='large' />
         <Input.Password size='middle' />
         <Input.Password size='small' />
+
+        <Input.TextArea size='large' />
+        <Input.TextArea size='middle' />
+        <Input.TextArea size='small' />
       </Flex>
 
       <Menu

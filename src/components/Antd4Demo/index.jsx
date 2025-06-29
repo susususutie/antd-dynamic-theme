@@ -154,6 +154,26 @@ export default function Antd4Demo() {
         <Input.Password size='large' />
         <Input.Password size='middle' />
         <Input.Password size='small' />
+
+        <Input.TextArea size='large' />
+        <Input.TextArea size='middle' />
+        <Input.TextArea size='small' />
+
+        <Input.Group compact size='large'>
+          <Input style={{ width: '20%' }} />
+          <Input style={{ width: '20%' }} />
+          <Input style={{ width: '30%' }} />
+        </Input.Group>
+          <Input.Group compact size='default'>
+          <Input style={{ width: '20%' }} />
+          <Input style={{ width: '20%' }} />
+          <Input style={{ width: '30%' }} />
+        </Input.Group>
+          <Input.Group compact size='small'>
+          <Input style={{ width: '20%' }} />
+          <Input style={{ width: '20%' }} />
+          <Input style={{ width: '30%' }} />
+        </Input.Group>
       </div>
 
       <Menu
