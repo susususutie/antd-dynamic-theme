@@ -2,7 +2,7 @@ import { Button, Space, Menu, Tag, Alert } from 'antd4'
 import { theme } from 'antd'
 import { useState } from 'react'
 import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
-import { Typography } from 'antd4'
+import { Typography, Select } from 'antd4'
 import { useStyles } from './styles'
 import cls from './index.module.less'
 
@@ -44,6 +44,53 @@ export default function Antd4Demo() {
         <Alert message='Warning Text' type='warning' />
         <Alert message='Error Text' type='error' />
       </Space>
+
+      <Select size='large' style={{ width: '100%', marginBottom: 16 }} />
+      <Select size='middle' style={{ width: '100%', marginBottom: 16 }} />
+      <Select size='small' style={{ width: '100%', marginBottom: 16 }} />
+
+      <Select
+        defaultValue={1}
+        style={{ width: '100%', marginBottom: 16 }}
+        options={Array.from({ length: 100 }).map((_, i) => ({
+          value: i,
+          label: `Option ${i}`,
+        }))}
+      />
+
+      <Select
+        mode='multiple'
+        size='large'
+        maxTagCount={3}
+        defaultValue={[1, 2]}
+        style={{ width: '100%', marginBottom: 16 }}
+        options={Array.from({ length: 100 }).map((_, i) => ({
+          value: i,
+          label: `Option ${i}`,
+        }))}
+      />
+      <Select
+        mode='multiple'
+        size='middle'
+        maxTagCount={3}
+        defaultValue={[1, 2]}
+        style={{ width: '100%', marginBottom: 16 }}
+        options={Array.from({ length: 100 }).map((_, i) => ({
+          value: i,
+          label: `Option ${i}`,
+        }))}
+      />
+      <Select
+        mode='multiple'
+        size='small'
+        maxTagCount={3}
+        defaultValue={[1, 2]}
+        style={{ width: '100%', marginBottom: 16 }}
+        options={Array.from({ length: 100 }).map((_, i) => ({
+          value: i,
+          label: `Option ${i}`,
+        }))}
+      />
 
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         <Button.Group>

@@ -1650,6 +1650,7 @@ html {
 }
 .ant-select-single.ant-select-lg:not(.ant-select-customize-input) .ant-select-selector {
   height: 40px;
+  border-radius: var(--ant-border-radius-lg);
 }
 .ant-select-single.ant-select-lg:not(.ant-select-customize-input) .ant-select-selector::after,
 .ant-select-single.ant-select-lg:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-item,
@@ -1661,6 +1662,7 @@ html {
 }
 .ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector {
   height: 24px;
+  border-radius: var(--ant-border-radius-sm);
 }
 .ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector::after,
 .ant-select-single.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector .ant-select-selection-item,
@@ -1740,7 +1742,7 @@ html {
   line-height: 22px;
   background: #f5f5f5;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius-sm);
   cursor: default;
   transition: font-size 0.3s, line-height 0.3s, height 0.3s;
   -webkit-user-select: none;
@@ -1840,6 +1842,7 @@ html {
 .ant-select-multiple.ant-select-lg .ant-select-selection-item {
   height: 32px;
   line-height: 30px;
+  border-radius: var(--ant-border-radius);
 }
 .ant-select-multiple.ant-select-lg .ant-select-selection-search {
   height: 32px;
@@ -1856,6 +1859,7 @@ html {
 .ant-select-multiple.ant-select-sm .ant-select-selection-item {
   height: 16px;
   line-height: 14px;
+  border-radius: var(--ant-border-radius-xs);
 }
 .ant-select-multiple.ant-select-sm .ant-select-selection-search {
   height: 16px;
@@ -1928,8 +1932,14 @@ html {
   position: relative;
   background-color: #fff;
   border: 1px solid #d9d9d9;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius);
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.ant-select-multiple.ant-select-lg:not(.ant-select-customize-input) .ant-select-selector {
+  border-radius: var(--ant-border-radius-lg);
+}
+.ant-select-multiple.ant-select-sm:not(.ant-select-customize-input) .ant-select-selector {
+  border-radius: var(--ant-border-radius-sm);
 }
 .ant-select:not(.ant-select-customize-input) .ant-select-selector input {
   cursor: pointer;
@@ -2097,12 +2107,12 @@ html {
   left: -9999px;
   z-index: 1050;
   box-sizing: border-box;
-  padding: 4px 0;
+  padding: 4px;
   overflow: hidden;
   font-size: 14px;
   font-variant: initial;
   background-color: #fff;
-  border-radius: 2px;
+  border-radius: var(--ant-border-radius-lg);
   outline: none;
   box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
 }
@@ -2148,6 +2158,15 @@ html {
   line-height: 22px;
   cursor: pointer;
   transition: background 0.3s ease;
+  border-radius: var(--ant-border-radius-sm);
+}
+.ant-select-item-option-selected:has(+ .ant-select-item-option-selected) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.ant-select-item-option-selected + .ant-select-item-option-selected {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 .ant-select-item-group {
   color: rgba(0, 0, 0, 0.45);
