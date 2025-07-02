@@ -1,5 +1,6 @@
 export { default } from './component/StoreProvider'
 export { default as ThemeManager } from './component/StoreProvider'
+export { UpdaterContext } from './context/updaterContext'
 export { PrefixContext } from './context/prefixContext'
 export { SeedTokenContext } from './context/seedTokenContext'
 export { ThemeModeContext } from './context/themeModeContext'

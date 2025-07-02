@@ -14,19 +14,14 @@ export default function storeReducer(state, action) {
       if (action.payload !== 'auto') {
         updateAntd4CssVars(action.payload === 'dark', state.seedToken)
       }
-      return {
-        ...state,
-        themeMode: action.payload,
-      }
+      return { ...state, themeMode: action.payload }
     }
     case 'update-seedToken': {
+      const seedToken = { ...state.seedToken, ...action.payload }
       if (state.themeMode !== 'auto') {
-        updateAntd4CssVars(state.themeMode === 'dark', action.payload)
+        updateAntd4CssVars(state.themeMode === 'dark', seedToken)
       }
-      return {
-        ...state,
-        seedToken: { ...state.seedToken, ...action.payload },
-      }
+      return { ...state, seedToken }
     }
     default: {
       return state

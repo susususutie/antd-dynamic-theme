@@ -10,9 +10,6 @@ export const initialSeedTokenValue = {
   borderRadius: 6,
 }
 
-export const SeedTokenContext = createContext({
-  value: initialSeedTokenValue,
-  update: () => void 0,
-})
+export const SeedTokenContext = createContext(initialSeedTokenValue)
 
 export const SeedTokenProvider = SeedTokenContext.Provider

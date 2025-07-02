@@ -7,7 +7,7 @@ function getStyle(prefixCls, isDarkMode, seedToken) {
   const token = theme.getDesignToken(
     isDarkMode ? { algorithm: theme.darkAlgorithm, token: seedToken } : { token: seedToken }
   )
-  console.log(`colorPrimary:${token.colorPrimary}, colorBgLayout:${token.colorBgLayout};`)
+  console.log(`colorPrimary:${token.colorPrimary}, borderRadius:${token.borderRadius};`)
   const variables = {}
 
   const formatColor = (color, updater) => {
@@ -153,7 +153,7 @@ function genUpdateFun() {
   let latestArgsKey = ''
 
   return (isDarkMode, seedToken) => {
-    console.log('updateAntd4CssVars 检查是否需要更新样式文件')
+    // console.log('updateAntd4CssVars 检查是否需要更新样式文件')
 
     if (latestArgsKey) {
       if (latestArgsKey === JSON.stringify([isDarkMode, seedToken])) {

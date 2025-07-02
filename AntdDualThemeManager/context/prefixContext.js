@@ -5,6 +5,6 @@ export const initialPrefixValue = {
   iconPrefixCls: 'ant5icon',
 }
 
-export const PrefixContext = createContext({ value: initialPrefixValue, update: () => void 0 })
+export const PrefixContext = createContext(initialPrefixValue)
 
 export const PrefixProvider = PrefixContext.Provider

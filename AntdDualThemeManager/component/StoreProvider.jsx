@@ -1,4 +1,5 @@
 import { useMemo, useReducer } from 'react'
+import { UpdaterProvider } from '../context/updaterContext'
 import { initialSeedTokenValue, SeedTokenProvider } from '../context/seedTokenContext'
 import { initialPrefixValue, PrefixProvider } from '../context/prefixContext'
 import { initialThemeModeValue, ThemeModeProvider } from '../context/themeModeContext'
@@ -27,7 +28,7 @@ export default function StoreProvider(props) {
     if (isInitialMount.current) {
       isInitialMount.current = false
       dispatch({ type: 'update-themeMode', payload: themeMode })
-      dispatch({ type: 'update-seedToken', payload: { ...initialSeedTokenValue, ...seedToken } })
+      dispatch({ type: 'update-seedToken', payload: seedToken })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -37,23 +38,13 @@ export default function StoreProvider(props) {
     themeMode,
     seedToken: { ...initialSeedTokenValue, ...seedToken },
   })
-
-  const prefixContext = useMemo(
-    () => ({ value: storeState.prefix, update: prefix => dispatch({ type: 'update-prefix', payload: prefix }) }),
-    [storeState.prefix]
-  )
-
-  const seedTokenContext = useMemo(
+  const themeUpdater = useMemo(
     () => ({
-      value: storeState.seedToken,
-      update: seedToken => dispatch({ type: 'update-seedToken', payload: seedToken }),
+      updateThemeMode: payload => dispatch({ type: 'update-themeMode', payload }),
+      updateSeedToken: payload => dispatch({ type: 'update-seedToken', payload }),
+      updatePrefix: payload => dispatch({ type: 'update-prefix', payload }),
     }),
-    [storeState.seedToken]
-  )
-
-  const themeModeContext = useMemo(
-    () => ({ value: storeState.themeMode, update: theme => dispatch({ type: 'update-themeMode', payload: theme }) }),
-    [storeState.themeMode]
+    []
   )
 
   useEffect(() => {
@@ -62,27 +53,29 @@ export default function StoreProvider(props) {
   }, [])
 
   return (
-    <PrefixProvider value={prefixContext}>
-      <SeedTokenProvider value={seedTokenContext}>
-        <ThemeModeProvider value={themeModeContext}>
-          <ConfigProvider
-            {...configProviderProps}
-            prefixCls={storeState.prefix.prefixCls}
-            iconPrefixCls={storeState.prefix.iconPrefixCls}
-            theme={{
-              ...configProviderProps?.token,
-              token: storeState.seedToken,
-            }}
-          >
-            <ConfigProvider4 {...configProviderProps4}>
-              <ThemeProvider themeMode={storeState.themeMode}>
-                <Antd4ThemeUpdater />
-                {children}
-              </ThemeProvider>
-            </ConfigProvider4>
-          </ConfigProvider>
-        </ThemeModeProvider>
-      </SeedTokenProvider>
-    </PrefixProvider>
+    <UpdaterProvider value={themeUpdater}>
+      <PrefixProvider value={storeState.prefix}>
+        <SeedTokenProvider value={storeState.seedToken}>
+          <ThemeModeProvider value={storeState.themeMode}>
+            <ConfigProvider
+              {...configProviderProps}
+              prefixCls={storeState.prefix.prefixCls}
+              iconPrefixCls={storeState.prefix.iconPrefixCls}
+              theme={{
+                ...configProviderProps?.token,
+                token: storeState.seedToken,
+              }}
+            >
+              <ConfigProvider4 {...configProviderProps4}>
+                <ThemeProvider themeMode={storeState.themeMode}>
+                  <Antd4ThemeUpdater />
+                  {children}
+                </ThemeProvider>
+              </ConfigProvider4>
+            </ConfigProvider>
+          </ThemeModeProvider>
+        </SeedTokenProvider>
+      </PrefixProvider>
+    </UpdaterProvider>
   )
 }

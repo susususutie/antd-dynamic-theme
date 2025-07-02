@@ -7,6 +7,6 @@ import { createContext } from 'react'
  */
 export const initialThemeModeValue = 'light'
 
-export const ThemeModeContext = createContext({ value: initialThemeModeValue, update: () => void 0 })
+export const ThemeModeContext = createContext(initialThemeModeValue)
 
 export const ThemeModeProvider = ThemeModeContext.Provider
