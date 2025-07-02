@@ -1,10 +1,26 @@
- 
+import { useContext } from 'react'
 import Demo from './components/Demo'
+import { SeedTokenContext } from 'antd-dual-theme-manager/index.js'
+import { Button } from 'antd'
 
 function App() {
   // TODO 动态加载组件，测试自定义样式是否被覆盖
+  const { value: seedToken, update: updateSeedToken } = useContext(SeedTokenContext)
 
-  return <Demo />
+  return (
+    <div>
+      <Button
+        onClick={() =>
+          updateSeedToken({
+            colorPrimary: '#' + Math.round(Math.random() * 0xffffff).toString(16),
+          })
+        }
+      >
+        更新{seedToken?.colorPrimary}
+      </Button>
+      <Demo />
+    </div>
+  )
 }
 
 export default App

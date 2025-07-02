@@ -5,7 +5,7 @@ import { createContext } from 'react'
  * 注意：在 auto 模式下，因为初始 appearance 为 light，页面会先显示 light 再切换至 dark。这个切换的过程暂时无法消除，antd-style 官网也有这个问题
  * dark | light | auto
  */
-export const initialThemeModeValue = 'auto'
+export const initialThemeModeValue = 'light'
 
 export const ThemeModeContext = createContext({ value: initialThemeModeValue, update: () => void 0 })
 

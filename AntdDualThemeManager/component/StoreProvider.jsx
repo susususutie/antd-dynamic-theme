@@ -1,64 +1,41 @@
 import { useMemo, useReducer } from 'react'
-import { SeedTokenProvider } from '../context/seedTokenContext'
+import { initialSeedTokenValue, SeedTokenProvider } from '../context/seedTokenContext'
 import { initialPrefixValue, PrefixProvider } from '../context/prefixContext'
 import { initialThemeModeValue, ThemeModeProvider } from '../context/themeModeContext'
 import { useEffect } from 'react'
-import updateAntd4CssVars from '../util/updateAntd4CssVars'
 import { ConfigProvider } from 'antd'
 import { ThemeProvider } from 'antd-style'
 import { ConfigProvider as ConfigProvider4 } from 'antd4'
 import '../style/antd4.variable.css'
 import Antd4ThemeUpdater from './Antd4ThemeUpdater'
-
-function storeReducer(state, action) {
-  // 1. themeMode !== 'auto'，能确定 appearance 则直接调用 updateAntd4Theme
-  // 2. themeMode === 'auto'，无法立即确定 appearance，则在 ThemeAppearance 组件中调用
-  switch (action.type) {
-    case 'update-prefix': {
-      return {
-        ...state,
-        prefix: { ...state.prefix, ...action.payload },
-      }
-    }
-    case 'update-themeMode': {
-      if (action.payload !== 'auto') {
-        updateAntd4CssVars(action.payload === 'dark', state.seedToken)
-      }
-      return {
-        ...state,
-        themeMode: action.payload,
-      }
-    }
-    case 'update-seedToken': {
-      if (state.themeMode !== 'auto') {
-        updateAntd4CssVars(state.themeMode === 'dark', action.payload)
-      }
-      return {
-        ...state,
-        seedToken: { ...state.seedToken, ...action.payload },
-      }
-    }
-    default: {
-      return state
-    }
-  }
-}
+import storeReducer from '../util/storeReducer'
+import { useRef } from 'react'
 
 export default function StoreProvider(props) {
   const {
     children,
     themeMode = initialThemeModeValue,
-    seedToken,
+    seedToken = initialSeedTokenValue,
     configProviderProps4,
     prefixCls = initialPrefixValue.prefixCls,
     iconPrefixCls = initialPrefixValue.iconPrefixCls,
     ...configProviderProps
   } = props
 
+  const isInitialMount = useRef(true)
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false
+      dispatch({ type: 'update-themeMode', payload: themeMode })
+      dispatch({ type: 'update-seedToken', payload: { ...initialSeedTokenValue, ...seedToken } })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const [storeState, dispatch] = useReducer(storeReducer, {
     prefix: { prefixCls, iconPrefixCls },
     themeMode,
-    seedToken,
+    seedToken: { ...initialSeedTokenValue, ...seedToken },
   })
 
   const prefixContext = useMemo(
