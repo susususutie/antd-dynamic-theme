@@ -1,15 +1,29 @@
-import { Button, Space, Menu, Tag, Alert, Typography, Select, Input, Table, Pagination, Dropdown } from 'antd4'
-import { theme } from 'antd'
+import {
+  theme,
+  Flex,
+  //
+  Button,
+  Menu,
+  Space,
+  Tag,
+  Alert,
+  Typography,
+  Select,
+  Input,
+  Table,
+  Tabs,
+  DatePicker,
+  Pagination,
+  Dropdown,
+} from 'antd'
 import { useState } from 'react'
+import { Global, useStyles } from './styles'
 import { AppstoreOutlined, MailOutlined, UpOutlined } from '@ant-design/icons'
-import { useStyles } from './styles'
-import cls from './index.module.less'
-import { DatePicker } from 'antd4'
-import { Tabs } from 'antd4'
 
-export default function Antd4Demo() {
+export default function Antd5Demo() {
   const [count, setCount] = useState(0)
 
+  // 1. 行内样式
   const { token } = theme.useToken()
   const inlineStyle = {
     outline: 'none',
@@ -25,11 +39,13 @@ export default function Antd4Demo() {
   }
 
   // 2. 单独样式文件 (css in js)
-  const { cx, styles, theme: t } = useStyles({ border: false })
+  const { cx, styles } = useStyles({ border: false })
 
   return (
-    <div style={{ width: 400 }}>
-      <Typography.Title level={3}>Antd4Demo {count}</Typography.Title>
+    <div style={{ flex: '1 1 50%', overflow: 'hidden' }}>
+      <Typography.Title level={3}>Antd5Demo {count}</Typography.Title>
+
+      <Global />
 
       <div style={{ marginBottom: 16 }}>
         <Tag color='success'>success</Tag>
@@ -93,32 +109,32 @@ export default function Antd4Demo() {
         }))}
       />
 
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
-        <Button.Group>
+      <Flex wrap gap={8} style={{ marginBottom: 16 }}>
+        <Space.Compact>
           <Button size='large'>1</Button>
           <Button size='large'>2</Button>
-        </Button.Group>
-        <Button.Group>
+        </Space.Compact>
+        <Space.Compact>
           <Button size='middle'>1</Button>
           <Button size='middle'>2</Button>
-        </Button.Group>
-        <Button.Group>
+        </Space.Compact>
+        <Space.Compact>
           <Button size='small'>1</Button>
           <Button size='small'>2</Button>
-        </Button.Group>
+        </Space.Compact>
 
-        <Button.Group size='large'>
+        <Space.Compact size='large'>
           <Button>1</Button>
           <Button>2</Button>
-        </Button.Group>
-        <Button.Group size='middle'>
+        </Space.Compact>
+        <Space.Compact size='middle'>
           <Button>1</Button>
           <Button>2</Button>
-        </Button.Group>
-        <Button.Group size='small'>
+        </Space.Compact>
+        <Space.Compact size='small'>
           <Button>1</Button>
           <Button>2</Button>
-        </Button.Group>
+        </Space.Compact>
 
         <Button icon={<UpOutlined />} size='large' shape='circle' />
         <Button icon={<UpOutlined />} size='middle' shape='circle' />
@@ -138,9 +154,9 @@ export default function Antd4Demo() {
         <button style={inlineStyle}>
           <span>自定义组件</span>
         </button>
-      </div>
+      </Flex>
 
-      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
+      <Flex vertical gap={8} style={{ marginBottom: 16 }}>
         <Input size='large' />
         <Input size='middle' />
         <Input size='small' />
@@ -161,32 +177,14 @@ export default function Antd4Demo() {
         <Input.TextArea size='middle' />
         <Input.TextArea size='small' />
 
-        <Input.Group compact size='large'>
-          <Input style={{ width: '20%' }} />
-          <Input style={{ width: '20%' }} />
-          <Input style={{ width: '30%' }} />
-        </Input.Group>
-        <Input.Group compact size='default'>
-          <Input style={{ width: '20%' }} />
-          <Input style={{ width: '20%' }} />
-          <Input style={{ width: '30%' }} />
-        </Input.Group>
-        <Input.Group compact size='small'>
-          <Input style={{ width: '20%' }} />
-          <Input style={{ width: '20%' }} />
-          <Input style={{ width: '30%' }} />
-        </Input.Group>
-      </div>
-      <DatePicker size='large' />
-      <DatePicker size='middle' />
-      <DatePicker size='small' />
-
-      <DatePicker.TimePicker size='large' />
-      <DatePicker.TimePicker size='middle' />
-      <DatePicker.TimePicker size='small' />
+        <DatePicker size='large' />
+        <DatePicker size='middle' />
+        <DatePicker size='small' />
+      </Flex>
 
       <Table
         bordered
+        rowKey='name'
         size='large'
         columns={[
           { title: 'Name', dataIndex: 'name' },
@@ -199,6 +197,7 @@ export default function Antd4Demo() {
       />
       <Table
         bordered
+        rowKey='name'
         columns={[
           { title: 'Name', dataIndex: 'name' },
           { title: 'Age', dataIndex: 'age' },
@@ -210,6 +209,7 @@ export default function Antd4Demo() {
       />
       <Table
         bordered
+        rowKey='name'
         size='small'
         columns={[
           { title: 'Name', dataIndex: 'name' },
@@ -270,7 +270,6 @@ export default function Antd4Demo() {
       />
 
       <Menu
-        theme={t.appearance}
         mode='horizontal'
         items={[
           {
@@ -287,17 +286,10 @@ export default function Antd4Demo() {
         ]}
       />
 
-      <div className={styles.container} style={{ marginBottom: 16 }}>
+      <div className={styles.container}>
         <Space direction='vertical' style={{ width: '100%' }} size={16}>
           <div className={styles.defaultCard}>普通卡片</div>
           <div className={cx(styles.baseCard, styles.primaryCard)}>主要卡片</div>
-        </Space>
-      </div>
-
-      <div className={cls.container}>
-        <Space direction='vertical' style={{ width: '100%' }} size={16}>
-          <div className={cls.defaultCard}>普通卡片</div>
-          <div className={cx(cls.baseCard, cls.primaryCard)}>主要卡片</div>
         </Space>
       </div>
     </div>
