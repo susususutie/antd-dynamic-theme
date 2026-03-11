@@ -6,9 +6,10 @@ import Antd5Demo from './Antd5Demo'
 
 export default function Playground() {
   const themeUpdater = useContext(UpdaterContext)
-  useEffect(() => {
-    window.themeUpdater = themeUpdater
-  }, [themeUpdater])
+  // 调试用，生产环境应移除
+  // useEffect(() => {
+  //   window.themeUpdater = themeUpdater
+  // }, [themeUpdater])
 
   return (
     <Flex gap='middle' style={{ maxWidth: '100%', overflow: 'hidden' }}>
